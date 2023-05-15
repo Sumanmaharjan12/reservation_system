@@ -1,10 +1,22 @@
 <?php
-include('../connect.php');
+include('connect.php');
+$userprofile=$_SESSION='email';
+if($userprofile==true){
+    
+}
+else{
+    header('location:front/index.php');
+}
 $query="select * from booking";
 $result = mysqli_query($conn, $query);
 $data = mysqli_fetch_all($result,MYSQLI_ASSOC);
 ?>
-<table border="2px">
+<link rel="stylesheet" href="front/booking_table.css">
+<div class="booking">
+    <h1>MY BOOKING</h1>
+    <a href="front/homepage.php"><img src="image/logout.png" alt=""></a>
+</div>
+<table border="2px" class="table">
     <thead>
         <th>SN</th>
         <th>Email</th>

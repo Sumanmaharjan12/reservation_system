@@ -16,7 +16,7 @@
             <div class="icon">
                     <a href=""><img src="../image/icon.png" alt=""></a>
                     <div class="dropdown">
-                        <a href="booking_table.php">My Booking</a>
+                        <a href="../booking_table.php">My Booking</a>
                         <a href="">Edit Profile</a>
                         <a href="">Logout</a>
                     </div>
