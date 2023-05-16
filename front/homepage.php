@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +21,7 @@
                     <div class="dropdown">
                         <a href="../booking_table.php">My Booking</a>
                         <a href="">Edit Profile</a>
-                        <a href="">Logout</a>
+                        <a href="../logout.php">Logout</a>
                     </div>
             </div>
             <ul> 

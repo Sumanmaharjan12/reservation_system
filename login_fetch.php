@@ -9,8 +9,8 @@
         $result= mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($result)===1){
-            $_SESSION='email';
-            $_SESSION='password';
+            $_SESSION['email']="$email";
+            $_SESSION['password']="$password";
             header("location:front/homepage.php");
         }
         else{

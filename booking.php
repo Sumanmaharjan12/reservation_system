@@ -11,7 +11,7 @@ if(isset($_POST['email'])||isset($_POST['arrival'])||isset($_POST['time'])||isse
         
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('sssss', $email, $arrival, $time, $depature, $number);
+    $stmt->bind_param('ssssi', $email, $arrival, $time, $depature, $number);
 
     $stmt->execute();
     header("location:front/homepage.php");
