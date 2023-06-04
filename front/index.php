@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -21,12 +22,49 @@
         <p>Want to Book Room?</p>
         <a href="login.php"><button class="arrow">Book Now</button></href></a>
     </section>
-    <footer>
-        <ul class="icon">
-            <li><a href="https://www.facebook.com/"> <img src="../image/facebook.png" alt=""> </a></li>
-            <li><a href="https://www.instagram.com/"><img src="../image/instagram.png" alt=""></a></li>
-            <li><a href="https://twitter.com/"><img src="../image/twitter.png" alt=""></a></li>
-        </ul>
-    </footer>
+    <footer class="footer">
+    <div class="footer_containerleft">
+      <img src="../image/2.png" alt="">
+    </div>
+    <div class="footer_containerright">
+      <div class="row">
+        <div class="footer-col">
+          <h4> Hotel Reservation</h4>
+          <ul>
+            <li>
+              <a href="#"> About Us</a>
+            </li>
+            <li>
+              <a href="#"> Contact</a>
+            </li>
+          </ul>
+        </div> <!-- footer-col -->
+        <div class="footer-col">
+          <h4> Get Help </h4>
+          <ul>
+            <li class="register_style">
+              <p> Have a account?</p>
+              <a href="login.php"> Login</a>
+            </li>
+          </ul>
+        </div> <!-- footer-col -->
+        <div class="footer-col">
+          <h4> Follow US</h4>
+          <div class="social-links">
+            <a href=""> <i class="fab fa-facebook-f"></i></a>
+            <a href="#"> <i class="fab fa-instagram"></i></a>
+            <a href="#"> <i class="fab fa-twitter"></i></a>
+          </div>
+        </div> <!-- footer-col ends -->
+      </div> <!-- row -->
+      <div class="copyright1">
+        <p> 2023 Hotel. All rights reserved.</p>
+        <p>Use of this site constitutes acceptance of our User Agreement and privacy policy.</p>
+        <p>The Material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except
+          with the prior written permission of Hotel.</p>
+      </div>
+    </div> <!-- footer_containerright -->
+
+  </footer>
 </body>
 </html>

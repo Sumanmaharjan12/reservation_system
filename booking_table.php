@@ -1,28 +1,47 @@
 <?php
 session_start();
-$email=$_SESSION['email'];
 include('connect.php');
-//if(isset($_POST['email'])){
-/*$_SESSION['email']==$email;
 
-if($_SESSION['email']==$email){
-   
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    // Redirect the user to the login page or display an error message
+    header('Location: login.php');
+    exit();
 }
 
-else{
-    header('location:front/index.php');
-}
-}*/
-$query="select * from booking where email=?";
-$stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, "i", $email);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+// Retrieve the user ID from the session
+// $name= $_SESSION['name'];
+$email= $_SESSION['email'];
+
+
+// Establish a database connection
+
+
+// Retrieve records for the logged-in user
+$query="select * from booking where email='$email'";
+$result = mysqli_query($conn, $query);
+
+// Check for errors
 if (!$result) {
     die('Query Error: ' . mysqli_error($conn));
 }
-$data = mysqli_fetch_all($result,MYSQLI_ASSOC);
 
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    $i = 0;
+    // Looping through the results
+    while ($row = mysqli_fetch_assoc($result)) {
+        $records[$i] = array(
+            "Code" => $row['Code'],
+            "email" => $row['email'],
+            "arrival" => $row['arrival'],
+            "arrival_time" => $row['arrival_time'],
+            "depature" => $row['depature'],
+            "number" => $row['number'],
+        );
+        $i++;
+    }
+}
 ?>
 <link rel="stylesheet" href="front/booking_table.css">
 <div class="booking">
@@ -40,16 +59,14 @@ $data = mysqli_fetch_all($result,MYSQLI_ASSOC);
         
     </thead>
     <tbody>
-        <?php
-            if(mysqli_num_rows($result)>0)
-            {
-                foreach($data as $individual){
+        <?php 
+                foreach($records as $individual){
                     ?>
                     <tr>
                         <td> <?=$individual['Code']; ?> </td>
                          <td> <?=$individual['email']; ?> </td>
                          <td> <?=$individual['arrival']; ?> </td>
-                         <td> <?=$individual['time']; ?> </td>
+                         <td> <?=$individual['arrival_time']; ?> </td>
                          <td> <?=$individual['depature']; ?> </td>
                          <td> <?=$individual['number']; ?> </td>
                          <td>
@@ -62,10 +79,27 @@ $data = mysqli_fetch_all($result,MYSQLI_ASSOC);
                     </tr>
                     <?php
                 }
-                } else{
-                    echo "no data available";
-                }
-        ?>   
+        ?>
+        </tbody>
+            </table>
 
-    </tbody>
-</table>
+<!-- // Display the records
+while ($row = mysqli_fetch_assoc($result)) {
+    // Display or manipulate the data as needed
+    echo "Code:" .$row['Code']. "<br>";
+    echo "name:" .$row['name']. "<br>";
+    echo "email:" .$row['email']. "<br>";
+    echo "arrival:" .$row['arrival']. "<br>";
+    echo "time:" .$row['arrival_time']. "<br>";
+    echo "departure:" .$row['departure']. "<br>";
+    echo "number:" .$row['number']. "<br>";
+
+    // ...
+} -->
+<!-- 
+// Free the result set
+mysqli_free_result($result);
+
+// Close the database connection
+mysqli_close($conn);
+?> -->

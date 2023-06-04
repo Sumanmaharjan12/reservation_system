@@ -7,15 +7,17 @@ include('connect.php');
             $password=$_POST['password'];
             $confirmpassword=$_POST['confirmpassword'];
         }
-            $query = "INSERT INTO sign(name,email,date,password,confirmpassword) VALUES (?,?,?,?,?)";
+            $query = "INSERT INTO sign(name,email,date,password,confirmpassword) VALUES ('$name', '$email', '$date', '$password', '$confirmpassword')";
         
-            $stmt = $conn->prepare($query);
+            //$stmt = $conn->prepare($query);
         
-            $stmt->bind_param('sssss', $name, $email, $date, $password, $confirmpassword);
+            //$stmt->bind_param('sssss', $name, $email, $date, $password, $confirmpassword);
         
-            $stmt->execute();
+            //$stmt->execute();
+            if(mysqli_query($conn,$query)){
             header("location:front/login.php");
-            $stmt-> close();
+            }
+            //$stmt-> close();
             $conn-> close();
 
 ?>

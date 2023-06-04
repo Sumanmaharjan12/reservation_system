@@ -1,20 +1,22 @@
 <?php
 include ('connect.php');
-if(isset($_POST['email'])||isset($_POST['arrival'])||isset($_POST['time'])||isset($_POST['depature'])||isset($_POST['number'])){
+if(isset($_POST['name'])||isset($_POST['email'])||isset($_POST['arrival'])||isset($_POST['arrival_time'])||isset($_POST['depature'])||isset($_POST['number'])){
     $email=$_POST['email'];
     $arrival=date('Y-m-d',strtotime($_POST['arrival']));;
-    $time=($_POST['time']);
+    $arrival_time=($_POST['arrival_time']);
     $depature=date('Y-m-d',strtotime($_POST['depature']));;
     $number=$_POST['number'];
 }
-    $query = "INSERT INTO booking(email,arrival,time,depature,number) VALUES (?,?,?,?,?)";
+   $query = "INSERT INTO `booking` (email,arrival,arrival_time,depature,number) VALUES ('$email','$arrival','$arrival_time','$depature','$number')";
         
-    $stmt = $conn->prepare($query);
+    //$stmt = $conn->prepare($query);
 
-    $stmt->bind_param('ssssi', $email, $arrival, $time, $depature, $number);
+    //$stmt->bind_param('ssssi', $email, $arrival, $arrival_time, $depature, $number);
 
-    $stmt->execute();
+   // $stmt->execute();
+   if(mysqli_query($conn,$query)){
     header("location:front/homepage.php");
-    $stmt-> close();
+   }
+    //$stmt-> close();
     $conn-> close();
 ?>

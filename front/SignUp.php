@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="SignUp.css">
 </head>
 <body>
+    <a href="index.php" class="cross">&times;</a>    <br>
     <h1 data-text="signup">SignUp</h1>
+    
     <div class="sign">
         <form action="../signup1.php" method="POST">
             <label for="name">Name:</label><br>

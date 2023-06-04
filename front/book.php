@@ -11,8 +11,10 @@
    <div class="header">
 
    </div>
+   <a href="homepage.php" class="cross">&times;</a>
    <section class="book">
         <h1 class="now">Book Now</h1>
+        
         <div class="room-content">
             <div class="room">
                 <a href="#divone"><img src="../image/5.12.jpg" alt="" class="room-img"></a>
@@ -27,7 +29,7 @@
                 <span class="price">$60</span><br>
                 <a href="#divone"><button class="btn">Book Now</button></a>
             </div>
-            <div class="room">../
+            <div class="room">
                 <a href="#divone"><img src="../image/5.10.jpg" alt="" class="room-img"></a>
                     <h2 class="room-title">Room 103</h2>
                     <span class="price">$80</span><br>
@@ -70,7 +72,7 @@
                     </div>
                     <div class="input">
                         <label for="time">time:</label><br>
-                        <input type="time" name="time" id="time">
+                        <input type="time" name="arrival_time" id="arrival_time">
                     </div>
                     <div class="input">
                         <label for="date">Depature Date</label>
@@ -80,7 +82,7 @@
                         <label for="number">Number of People</label>
                         <input type="number" name="number" id="number">
                     </div>
-                  ><button class="button" >Book</button>
+                        <button class="button" type="submit">Book</button>
                 </form>
             </div>
         </div>

@@ -13,6 +13,7 @@
 </head>
 <body>
     <div class="container">
+    <a href="index.php" class="cross">&times;</a>
         <div class="login">
            <img src="../image/av.png" alt="">
              <h1>Log In</h1>
