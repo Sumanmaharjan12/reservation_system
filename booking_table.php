@@ -50,7 +50,7 @@ if (mysqli_num_rows($result) > 0) {
 </div>
 <table border="2px" class="table">
     <thead>
-        <th>SN</th>
+        <th>Code</th>
         <th>Email</th>
         <th>Arrival Date</th>
         <th>Time</th>
@@ -70,7 +70,7 @@ if (mysqli_num_rows($result) > 0) {
                          <td> <?=$individual['depature']; ?> </td>
                          <td> <?=$individual['number']; ?> </td>
                          <td>
-                            <a href="" class="btn">Edit</a>
+                            <a href="update_book.php?Code=<?=$individual['Code']?>" class="btn">Edit</a>
                          </td>
                          <td>
                                 <a href='delete.php?email="<?=$individual['email']?>"' class="btn">Delete</a>

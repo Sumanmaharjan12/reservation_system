@@ -105,11 +105,11 @@ html{
 }
 .footer{
     background: #24262b;
-    padding: 70PX 0;
+    padding: 70px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    margin-top: 250px;
 }
 
 .footer_containerleft{

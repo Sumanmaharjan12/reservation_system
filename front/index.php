@@ -29,13 +29,10 @@
     <div class="footer_containerright">
       <div class="row">
         <div class="footer-col">
-          <h4> Hotel Reservation</h4>
+          <h4> Want to be a member?</h4>
           <ul>
             <li>
-              <a href="#"> About Us</a>
-            </li>
-            <li>
-              <a href="#"> Contact</a>
+              <a href="signup.php"> Sign Up</a>
             </li>
           </ul>
         </div> <!-- footer-col -->
@@ -51,9 +48,9 @@
         <div class="footer-col">
           <h4> Follow US</h4>
           <div class="social-links">
-            <a href=""> <i class="fab fa-facebook-f"></i></a>
-            <a href="#"> <i class="fab fa-instagram"></i></a>
-            <a href="#"> <i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/"> <i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/"> <i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/"> <i class="fab fa-twitter"></i></a>
           </div>
         </div> <!-- footer-col ends -->
       </div> <!-- row -->
