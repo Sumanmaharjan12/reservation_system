@@ -8,5 +8,5 @@
     unset($_SESSION['number']);
 */
     session_destroy();
-    header('location:front/index.php');
+    header('location:../front/index.php');
 ?>

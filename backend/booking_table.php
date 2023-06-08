@@ -5,7 +5,7 @@ include('connect.php');
 // Check if the user is logged in
 if (!isset($_SESSION['email'])) {
     // Redirect the user to the login page or display an error message
-    header('Location: login.php');
+    header('Location: ../front/login.php');
     exit();
 }
 
@@ -43,10 +43,10 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 ?>
-<link rel="stylesheet" href="front/booking_table.css">
+<link rel="stylesheet" href="booking_table.css">
 <div class="booking">
     <h1>MY BOOKING</h1>
-    <a href="front/homepage.php"><img src="image/logout.png" alt=""></a>
+    <a href="../front/homepage.php"><img src="../image/logout.png" alt=""></a>
 </div>
 <table border="2px" class="table">
     <thead>

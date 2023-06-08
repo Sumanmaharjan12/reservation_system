@@ -15,7 +15,7 @@ if(isset($_POST['name'])||isset($_POST['email'])||isset($_POST['arrival'])||isse
 
    // $stmt->execute();
    if(mysqli_query($conn,$query)){
-    header("location:front/homepage.php");
+    header("location:../front/homepage.php");
    }
     //$stmt-> close();
     $conn-> close();

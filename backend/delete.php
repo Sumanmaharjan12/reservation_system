@@ -7,11 +7,11 @@ if(isset($_GET['email'])){
    
     if($result){
         echo "Deleted succesfully";
-        echo "<br /> <a href='front/homepage.php'>Go Back </a>";
+        echo "<br /> <a href='../front/homepage.php'>Go Back </a>";
     }
     else{
         echo "Error deleting the booking.";
-        echo "<br /> <a href='front/homepage.php'>Go Back </a>";
+        echo "<br /> <a href='../front/homepage.php'>Go Back </a>";
     }
 }
 mysqli_close($conn);

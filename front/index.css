@@ -61,9 +61,21 @@ body{
   
 }
 .arrow {
-  border: 2px solid black;
-  padding: 3px;
-  cursor: pointer;
+  width: 10%;
+    height: 30px;
+    border: 1px solid;
+    background:black;
+    color: #e9f4fb;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .3s;
+    outline: none;
+}
+.arrow:hover{
+  background-color: white;
+  color: #24262b;
 }
 .footer{
   background: #24262b;

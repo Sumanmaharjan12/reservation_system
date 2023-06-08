@@ -17,7 +17,7 @@
         <div class="login">
            <img src="../image/av.png" alt="">
              <h1>Log In</h1>
-                <form action="../login_fetch.php" method="POST">
+                <form action="../backend/login_fetch.php" method="POST">
                     <div class="input_feild">
                         <input type="text" name="email" id="email" placeholder="Email"><br>
                     </div>

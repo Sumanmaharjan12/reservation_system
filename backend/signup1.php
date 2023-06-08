@@ -15,7 +15,7 @@ include('connect.php');
         
             //$stmt->execute();
             if(mysqli_query($conn,$query)){
-            header("location:front/login.php");
+            header("location:../front/login.php");
             }
             //$stmt-> close();
             $conn-> close();

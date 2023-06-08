@@ -61,7 +61,7 @@
         <a href="#"class="close">&times;</a>
         <div class="content">
             <div class="container">
-                <form action="../booking.php" method="POST">
+                <form action="../backend/booking.php" method="POST">
                     <div class="input">
                         <label for="email">Email:</label><br>
                         <input type="email" name="email" id="email"required>

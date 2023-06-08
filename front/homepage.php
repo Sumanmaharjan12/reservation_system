@@ -19,10 +19,10 @@
             <div class="icon">
                     <a href=""><img src="../image/icon.png" alt=""></a>
                     <div class="dropdown">
-                        <a href="">My Profile</a>
-                        <a href="../booking_table.php">My Booking</a>
+                        <a href="../backend/profile.php">My Profile</a>
+                        <a href="../backend/booking_table.php">My Booking</a>
                         <a href="">Edit Profile</a>
-                        <a href="../logout.php">Logout</a>
+                        <a href="../backend/logout.php">Logout</a>
                     </div>
             </div>
             <ul> 

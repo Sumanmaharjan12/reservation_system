@@ -12,10 +12,10 @@
         if(mysqli_num_rows($result)==1){
             $_SESSION['email']="$email";
             $_SESSION['password']="$password";
-            header("location:front/homepage.php");
+            header("location:../front/homepage.php");
         }
         else{
-            header("location:front/signup.php");
+            header("location:../front/signup.php");
          
         }
         mysqli_close($conn);
