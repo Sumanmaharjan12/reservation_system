@@ -33,6 +33,14 @@ body {
     padding: 20px 0 20px 0;
     border-bottom: 1px solid silver;
 }
+.center img{
+    height: 110px;
+    margin-left: 35%;
+    margin-top: 1%;
+}
+.center img:hover{
+    transform: translateY(-10px);
+}
 
 .center form {
     padding: 0px 50px;
@@ -42,7 +50,7 @@ body {
 form .text {
     position: relative;
     border-bottom: 2px solid #adadad;
-    margin: 30px 0px;
+    margin: 30px 0px 1px 0px;
 }
 
 .text input {
@@ -58,7 +66,7 @@ form .text {
 
 .text label {
     position: absolute;
-    top: 40%;
+    top: 25%;
     left: 5px;
     color: #adadad;
     transform: translateY(-50%);
@@ -75,7 +83,7 @@ form .text {
     transition: .5s;
 }
 
-.text span::before {
+/* .text span::before {
     content: '';
     position: absolute;
     top: 100%;
@@ -95,10 +103,10 @@ form .text {
 .text input:focus~span::before,
 .text input:valid~span::before {
     width: 100%;
-}
+} */
 
 
-.pass {
+/* .pass {
     width: fit-content;
     margin: -5px 0 20px 5px;
     color: #a6a6a6;
@@ -107,7 +115,7 @@ form .text {
 
 .pass:hover {
     text-decoration: underline;
-}
+} */
 
 input [type="button"] {
     width: 100%;
@@ -159,9 +167,9 @@ input[type="submit"]:hover {
 
 
 
-input[type="date"]:in-range::-webkit-datetime-edit-year-field,
+/* input[type="date"]:in-range::-webkit-datetime-edit-year-field,
 input[type="date"]:in-range::-webkit-datetime-edit-month-field,
 input[type="date"]:in-range::-webkit-datetime-edit-day-field,
 input[type="date"]:in-range::-webkit-datetime-edit-text {
     color: transparent;
-}
+} */

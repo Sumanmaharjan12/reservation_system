@@ -14,7 +14,6 @@
    <a href="homepage.php" class="cross">&times;</a>
    <section class="book">
         <h1 class="now">Book Now</h1>
-        
         <div class="room-content">
             <div class="room">
                 <a href="#divone"><img src="../image/5.12.jpg" alt="" class="room-img"></a>

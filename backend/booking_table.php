@@ -44,11 +44,12 @@ if (mysqli_num_rows($result) > 0) {
 }
 ?>
 <link rel="stylesheet" href="booking_table.css">
-<div class="booking">
-    <h1>MY BOOKING</h1>
-    <a href="../front/homepage.php"><img src="../image/logout.png" alt=""></a>
-</div>
-<table border="2px" class="table">
+<section class="booking" id="booking">
+    <section class="clip_path">
+      <h1>My BOOKING</h1>
+      <a href="../front/homepage.php"><img src="../image/logout.png" alt=""></a>
+    </section>
+    <table border="2px" class="table">
     <thead>
         <th>Code</th>
         <th>Email</th>
@@ -70,9 +71,6 @@ if (mysqli_num_rows($result) > 0) {
                          <td> <?=$individual['depature']; ?> </td>
                          <td> <?=$individual['number']; ?> </td>
                          <td>
-                            <a href="update_book.php?Code=<?=$individual['Code']?>" class="btn">Edit</a>
-                         </td>
-                         <td>
                                 <a href='delete.php?email="<?=$individual['email']?>"' class="btn">Delete</a>
                             </form>
                          </td>
@@ -82,24 +80,6 @@ if (mysqli_num_rows($result) > 0) {
         ?>
         </tbody>
             </table>
+    </section>
 
-<!-- // Display the records
-while ($row = mysqli_fetch_assoc($result)) {
-    // Display or manipulate the data as needed
-    echo "Code:" .$row['Code']. "<br>";
-    echo "name:" .$row['name']. "<br>";
-    echo "email:" .$row['email']. "<br>";
-    echo "arrival:" .$row['arrival']. "<br>";
-    echo "time:" .$row['arrival_time']. "<br>";
-    echo "departure:" .$row['departure']. "<br>";
-    echo "number:" .$row['number']. "<br>";
 
-    // ...
-} -->
-<!-- 
-// Free the result set
-mysqli_free_result($result);
-
-// Close the database connection
-mysqli_close($conn);
-?> -->

@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+<section class="top" id="top">
+    <section class="clip_path">
     <a href="homepage.php" class="cross">&times;</a>
     <h1>ABOUT US</h1>
+    </section>
     <div id="about">
         <section class="aboutus">
             <div class="about_img">
@@ -22,7 +25,7 @@
                 <a href="#read"><button class="btn">Read More</button></a> 
             </div>
         </section>
-       
+        </section>
         <div  class="overlay" id="read">
             <div class="wrapper">
                 <a href="aboutus.php"class="close">&times;</a> 

@@ -49,6 +49,7 @@ if (mysqli_num_rows($result) > 0) {
                         <div class="container">
                             <div class="center">
                                 <h1>MY PROFILE</h1>
+                                <img src="../image/av.png" alt="">
                                 <form action=" " method="POST">
                                 <div class="text">
                                         <input type="name" name="name" id="myInput" value="<?= $individual['name']?>" readonly>
@@ -63,9 +64,9 @@ if (mysqli_num_rows($result) > 0) {
                                     <div class="text">
                                         <input type="date" name="date"id="myInput" value="<?= $individual['date']?>" readonly>
                                         <span> </span>
-                                        <label for="">Date</label>
+                                        <label for="">Date of Birth</label>
                                     </div>
-                                    <button class="display-button"><a href="">Edit</a></button>
+                                    <button class="display-button"><a href="">EDIT</a></button>
                                 </form>
                             </div>
                         </div>   

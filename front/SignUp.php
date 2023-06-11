@@ -23,10 +23,17 @@
             <input type="password" name="password" id="password"required><br>
             <label for="Confirm Password">Confirm Password:</label><br>
             <input type="password" name="confirmpassword" id="confirmpassword"required><br>
-            <button name="submit">Confirm</button>
+            <button name="submit" onclick="checkpassword()">Confirm</button>
         </form>
         <p>By clicking the Confirm button, you agree to our<br> <a href="">Terms and condition</a> and <a href="">Policy Privacy</a></p>
     </div>
-   
+   <!-- <script>
+    function checkpassword(){
+        let password= document.getElementById("password").value;
+        let confirmpassword=document.getElementById("confirmpassword").value;
+        console.log(password,confirmpassword);
+        let message=document.getElementById("message")
+    }
+   </script> -->
 </body>
 </html>
