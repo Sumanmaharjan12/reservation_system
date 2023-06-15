@@ -41,13 +41,14 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 ?>
-<link rel="stylesheet" href="profile.css">
+<link rel="stylesheet" href="../backend_css/profile.css">
     <div class="container">
         <?php 
                 foreach($records as $individual){
                     ?>
                         <div class="container">
                             <div class="center">
+                                <a href="../front/homepage.php" class="close">&times;</a>
                                 <h1>MY PROFILE</h1>
                                 <img src="../image/av.png" alt="">
                                 <form action=" " method="POST">
@@ -66,7 +67,7 @@ if (mysqli_num_rows($result) > 0) {
                                         <span> </span>
                                         <label for="">Date of Birth</label>
                                     </div>
-                                    <button class="display-button"><a href="">EDIT</a></button>
+                                    <button class="display-button"><a href="update_profile.php?email=<?=$individual['email']?>">EDIT</a></button>
                                 </form>
                             </div>
                         </div>   

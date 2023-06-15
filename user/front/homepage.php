@@ -21,7 +21,6 @@
                     <div class="dropdown">
                         <a href="../backend/profile.php">My Profile</a>
                         <a href="../backend/booking_table.php">My Booking</a>
-                        <a href="">Edit Profile</a>
                         <a href="../backend/logout.php">Logout</a>
                     </div>
             </div>

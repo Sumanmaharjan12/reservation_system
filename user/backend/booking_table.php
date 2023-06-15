@@ -43,7 +43,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 ?>
-<link rel="stylesheet" href="booking_table.css">
+<link rel="stylesheet" href="../backend_css/booking_table.css">
 <section class="booking" id="booking">
     <section class="clip_path">
       <h1>My BOOKING</h1>
