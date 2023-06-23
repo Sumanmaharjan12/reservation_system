@@ -61,7 +61,14 @@ form input{
     border-radius: 6px;
     margin-bottom: 5px;
 }
-button{
+.pass-icon{
+    position: absolute;
+    top: 442px;
+    right: 550px;
+    width: 24px;
+    cursor: pointer;
+}
+.submit{
     width: 320px;
     height: 35px;
     margin-top: 20px;
@@ -78,3 +85,24 @@ p{
 a{
     text-decoration: none;
 }
+.password-container{
+    position: relative;
+}
+#togglePassword {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .fa-eye {
+    color: #999;
+  }
+  
+  .fa-eye-slash {
+    color: #333;
+  }

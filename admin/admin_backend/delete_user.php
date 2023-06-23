@@ -2,12 +2,12 @@
 include('../admin_backend/connect.php');
 if(isset($_GET['email'])){
     $email=$_GET['email'];
-    $query="Delete from booking where email=$email";
+    $query="Delete from sign where email=$email";
     $result = mysqli_query($conn, $query);
    
     if($result){
         echo"
-        <script> confirm('Do you want to delete the data?'); window.location='../admin/booking.php';</script>
+        <script> confirm('Do you want to delete the data?'); window.location='../admin/users.php';</script>
         ";
     }
     else{

@@ -21,11 +21,25 @@ body{
    background-repeat: no-repeat; 
    background-size: cover;
 }
+
 .login img{
     height: 100px;
 }
 .login img:hover{
     transform: translateY(-10px);
+}
+.bx{
+    font-family: boxicons!important;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    display: inline-block;
+    text-transform: none;
+    margin-right: 7px;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
 }
 .login{
     width: 50%;

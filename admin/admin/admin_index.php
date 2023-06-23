@@ -22,7 +22,7 @@ if (!isset($_SESSION['name'])) {
         <!-- SIDEBAR -->
             <section id="sidebar">
                 <div class="icon1">
-                    <a href="../Landing_pages/index.php"><img src="../images/admin.png" alt="Logo1">
+                    <a href="admin_index.php"><img src="../images/admin.png" alt="Logo1">
                     </a>
                 </div>
                 <ul class="side-menu top">
@@ -45,7 +45,7 @@ if (!isset($_SESSION['name'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="Dashboard_managegallery.php">
+                        <a href="">
                             <i class='bx bx-bed'></i>
                             <span class="text">Rooms</span>
                         </a>
@@ -59,7 +59,7 @@ if (!isset($_SESSION['name'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="../logout.php" class="logout">
+                        <a href="../admin_backend/logout.php" >
                             <i class='bx bxs-log-out-circle'></i>
                             <span class="text">Logout</span>
                         </a>
@@ -101,7 +101,7 @@ if (!isset($_SESSION['name'])) {
                             $userCount= $row['user_count'];
 
                             //Display the Admin Count
-                            $query = "SELECT COUNT(*) as admin_count FROM admin";
+                            $query = "SELECT COUNT(*) as admin_count FROM admin_detail";
                             $result = mysqli_query($conn, $query);
                             $row = mysqli_fetch_assoc($result);
                             $adminCount= $row['admin_count'];
@@ -140,6 +140,46 @@ if (!isset($_SESSION['name'])) {
                                 </span>
                             </li>
                         </ul>
+                        <div class="table-data">
+                <div class="order">
+                     <h2>Admin</h2>
+
+                     <a href="" class="btn"><i class="bx bx-plus add-icon"></i></a>       
+                    <table class="table" border="2px">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Email </th>
+                                 <th class="text-center">Date of Birth</th>
+                                <th class="text-center">Phone Number</th>
+                            </tr>
+                        </thead>
+    <?php
+      include_once "../admin_backend/connect.php";
+      $query="select * from admin_detail";
+      $result = mysqli_query($conn, $query);
+      if (mysqli_num_rows($result) > 0) {
+        while ($row=mysqli_fetch_assoc($result)) {
+           
+    ?>
+    <tr>
+      <td><?=$row["name"]?>
+      <td><?=$row["email"]?>
+      <td><?=$row["date"]?></td>
+      <td><?=$row["number"]?></td>
+      <td>
+            <a href='../admin_backend/delete_admin.php?email="<?=$row['email']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>             
+      </td>       
+    </tr>
+    <?php
+
+           
+        }
+    }
+    ?>
+  </table>
+</div>
+</div>
                        
     </body>  
     </html>

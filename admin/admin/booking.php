@@ -23,7 +23,7 @@ if (!isset($_SESSION['name'])) {
         <!-- SIDEBAR -->
             <section id="sidebar">
                 <div class="icon1">
-                    <a href="../Landing_pages/index.php"><img src="../images/admin.png" alt="Logo1">
+                    <a href="admin_index.php"><img src="../images/admin.png" alt="Logo1">
                     </a>
                 </div>
                 <ul class="side-menu top">
@@ -46,7 +46,7 @@ if (!isset($_SESSION['name'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="Dashboard_managegallery.php">
+                        <a href="">
                             <i class='bx bx-bed'></i>
                             <span class="text">Rooms</span>
                         </a>
@@ -60,7 +60,7 @@ if (!isset($_SESSION['name'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="../logout.php" class="logout">
+                        <a href="../admin_backend/logout.php" class="logout">
                             <i class='bx bxs-log-out-circle'></i>
                             <span class="text">Logout</span>
                         </a>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['name'])) {
 
             <div class="table-data">
                 <div class="order">
-                     <h2>All Customers</h2>
+                     <h2>BOOKINGS</h2>
                     <table class="table" border="2px">
                         <thead>
                             <tr>
@@ -123,7 +123,7 @@ if (!isset($_SESSION['name'])) {
       <td><?=$row["depature"]?></td>
       <td><?=$row["number"]?></td>
       <td>
-            <a href='../admin_backend/delete_booking.php?email="<?=$individual['email']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>            
+            <a href='../admin_backend/delete_booking.php?email="<?=$row['email']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>            
       </td>      
     </tr>
     <?php
