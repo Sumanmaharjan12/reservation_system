@@ -60,7 +60,7 @@
         <a href="#"class="close">&times;</a>
         <div class="content">
             <div class="container">
-                <form action="../backend/booking.php" method="POST">
+                <form action="../backend/booking.php" method="POST" onsubmit="return validate()">
                     <div class="input">
                         <label for="email">Email:</label><br>
                         <input type="email" name="email" id="email"required>
@@ -87,5 +87,26 @@
         </div>
     </div>
    </div>
+        <script>
+            function validate(){
+                var inputDate=document.getElementById("arrival").value;
+                var inputDate1=document.getElementById("depature").value;
+                var select=new Date(inputDate);
+                var select1=new Date(inputDate1);
+                var current=new Date();
+                var current1=new Date();
+                if(select<current){
+                    alert("You cannot book on a past date.");
+                    return false;
+                }
+                else if(select1<current1){
+                    alert("You cannot book on a past date.");
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+        </script>
 </body>
 </html>

@@ -26,7 +26,7 @@
             </div>
                 <div class="submit">
                     <h4 class="third">Contact US</h4>
-                        <form action="">
+                        <form action="../backend/send_email.php" method="post">
                             <div class="input_box">
                                 <input type="text" class="input"  required>
                                 <label for="">Name</label>
@@ -43,7 +43,7 @@
                                 <textarea class="input" id="message" cols="30" rows="10" required></textarea>
                                 <label for="">Message</label>
                             </div>
-                           <button formaction="homepage.php"class="btn">Submit</button>
+                           <button class="btn">Submit</button>
                         </form>
         </div>
    </div>

@@ -45,7 +45,7 @@ if (!isset($_SESSION['name'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="room.php">
                             <i class='bx bx-bed'></i>
                             <span class="text">Rooms</span>
                         </a>

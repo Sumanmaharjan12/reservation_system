@@ -8,16 +8,10 @@ include('connect.php');
             $confirmpassword=$_POST['confirmpassword'];
         }
             $query = "INSERT INTO sign(name,email,date,password,confirmpassword) VALUES ('$name', '$email', '$date', '$password', '$confirmpassword')";
-        
-            //$stmt = $conn->prepare($query);
-        
-            //$stmt->bind_param('sssss', $name, $email, $date, $password, $confirmpassword);
-        
-            //$stmt->execute();
             if(mysqli_query($conn,$query)){
             header("location:../front/login.php");
             }
-            //$stmt-> close();
+       
             $conn-> close();
 
 ?>
