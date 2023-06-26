@@ -6,9 +6,10 @@ if(isset($_GET['email'])){
     $result = mysqli_query($conn, $query);
    
     if($result){
-        echo "Deleted succesfully";
-        echo "<br /> <a href='../front/homepage.php'>Go Back </a>";
-    }
+        echo"
+        <script> confirm('Deleted Sucessfull'); window.location='../front/homepage.php';</script>
+        ";
+       }
     else{
         echo "Error deleting the booking.";
         echo "<br /> <a href='../front/homepage.php'>Go Back </a>";

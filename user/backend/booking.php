@@ -15,7 +15,9 @@ if(isset($_POST['name'])||isset($_POST['email'])||isset($_POST['arrival'])||isse
 
    // $stmt->execute();
    if(mysqli_query($conn,$query)){
-    header("location:../front/homepage.php");
+    echo"
+    <script> alert('Booking Sucessfull'); window.location='../front/homepage.php';</script>
+    ";
    }
     //$stmt-> close();
     $conn-> close();

@@ -1,5 +1,5 @@
 <?php
-
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $name=$_POST['name'];
 $email=$_POST['email'];
 $message=$_POST['message'];
@@ -13,12 +13,13 @@ $body .="Email:$email\n";
 $body .="Message:\n$message";
 
 $headers="From:$email\r\n";
-$headers .="Reply-To:$email\r\n";
+
 
 if(mail($to,$subject,$body,$headers)){
     echo"email sent successfully.";
 }
 else{
     echo"error";
+}
 }
 ?>

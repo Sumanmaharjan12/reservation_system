@@ -52,12 +52,7 @@ if (!isset($_SESSION['name'])) {
                     </li>
                 </ul>
                 <ul class="side-menu">
-                    <li>
-                        <a href="#">
-                            <i class='bx bxs-cog'></i>
-                            <span class="text">Settings</span>
-                        </a>
-                    </li>
+                    
                     <li>
                         <a href="../admin_backend/logout.php" >
                             <i class='bx bxs-log-out-circle'></i>

@@ -24,7 +24,9 @@
                     </ul>
                 </div>
             </div>
-                <div class="submit">
+                
+                <div class="submit">    
+                <a href="homepage.php" class="cross">&times;</a>
                     <h4 class="third">Contact US</h4>
                         <form action="../backend/send_email.php" method="post">
                             <div class="input_box">

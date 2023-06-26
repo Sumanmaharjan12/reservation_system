@@ -46,19 +46,14 @@ if (!isset($_SESSION['name'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="room.php">
                             <i class='bx bx-bed'></i>
                             <span class="text">Rooms</span>
                         </a>
                     </li>
                 </ul>
                 <ul class="side-menu">
-                    <li>
-                        <a href="#">
-                            <i class='bx bxs-cog'></i>
-                            <span class="text">Settings</span>
-                        </a>
-                    </li>
+                  
                     <li>
                         <a href="../admin_backend/logout.php" class="logout">
                             <i class='bx bxs-log-out-circle'></i>

@@ -11,8 +11,8 @@ if(isset($_GET['email'])){
         ";
     }
     else{
-        echo "Error deleting the booking.";
-        echo "<br /> <a href='../front/homepage.php'>Go Back </a>";
+        echo "<script> confirm('Error while deleting'); window.location='../admin/booking.php';</script>
+        ";
     }
 }
 mysqli_close($conn);

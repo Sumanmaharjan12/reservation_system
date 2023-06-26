@@ -1,5 +1,3 @@
-
-
 <?php
 session_start();
 if (!isset($_SESSION['name'])) {
@@ -54,12 +52,7 @@ if (!isset($_SESSION['name'])) {
                     </li>
                 </ul>
                 <ul class="side-menu">
-                    <li>
-                        <a href="#">
-                            <i class='bx bxs-cog'></i>
-                            <span class="text">Settings</span>
-                        </a>
-                    </li>
+                   
                     <li>
                         <a href="../admin_backend/logout.php" class="logout">
                             <i class='bx bxs-log-out-circle'></i>
@@ -97,7 +90,6 @@ if (!isset($_SESSION['name'])) {
                 <title></title>
             </head>
             <body>
-            
                 <form action="../admin_backend/add_room.php" method="POST" enctype="multipart/form-data">
                     <label for="room_number">Room No:</label>
                     <input type="text" id="room_no" name="room_no" required>
@@ -108,15 +100,15 @@ if (!isset($_SESSION['name'])) {
                     <label for="capacity">Capacity:</label>
                     <input type="number" id="capacity" name="capacity" required>
                     <label for="room_image">Room Image:</label>
-                    <input type="file" id="room_image" name="room_image" accept="image/*" required>
+                    <input type="file" name="room_img" accept=".jpg, .png, .jpeg" required>
         
-                    <input type="submit" value="Add Room">
+                    <input type="submit" value="Add Room" name="save_room_image">
                 </form> 
            
         <div class="table-data">
                 <div class="order">
-                     <h2>ROOMS</h2>
-                    <table class="table" border="2px">
+                     <h1>ROOMS</h1>
+                        <table class="table" border="2px">
                         <thead>
                             <tr>
                                 <th class="text-center">ID</th>
@@ -139,7 +131,8 @@ if (!isset($_SESSION['name'])) {
                             <td><?=$row["room_no"]?>
                             <td><?=$row["room_type"]?>
                             <td><?=$row["capacity"]?></td>
-                            <td><?=$row["image"]?></td>
+                            <td><img src="upload/<?php echo $row["room_image"]; ?>"width=80></td>
+                            
                             
                             <td>
                                     <a href='../admin_backend/delete_user.php?email="<?=$row['room_no']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>            
