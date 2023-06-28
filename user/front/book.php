@@ -1,3 +1,8 @@
+<?php
+include('../backend/connect.php');
+$query="select * from room";
+$result = mysqli_query($conn, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,53 +11,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="book.css">
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css'>
 </head>
 <body>
    <div class="header">
 
    </div>
    <a href="homepage.php" class="cross">&times;</a>
+   <h1 class="now">Book Now</h1>
    <section class="book">
-        <h1 class="now">Book Now</h1>
+        <?php
+            while($row=mysqli_fetch_assoc($result)){
+        ?>
         <div class="room-content">
             <div class="room">
-                <a href="#divone"><img src="../image/5.12.jpg" alt="" class="room-img"></a>
-                <h2 class="room-title">Room 101</h2>
-                <span class="price">$50</span><br>
-                <a href="#divone"><button class="btn">Book Now</button></a>
-                
-            </div>
-            <div class="room">
-                <a href="#divone"><img src="../image/5.11.jpg" alt="" class="room-img"></a>
-                <h2 class="room-title">Room 102</h2>
-                <span class="price">$60</span><br>
-                <a href="#divone"><button class="btn">Book Now</button></a>
-            </div>
-            <div class="room">
-                <a href="#divone"><img src="../image/5.10.jpg" alt="" class="room-img"></a>
-                    <h2 class="room-title">Room 103</h2>
-                    <span class="price">$80</span><br>
+                <a href="#divone"><img src="../../admin/admin/upload/<?php echo $row["room_image"];?>" alt="" class="room-img"></a>
+                <div class="detail">
+                    <h2 class="room-title"><span class='bx bx-room'><?php echo $row["room_no"]; ?></span></h2>
+                    <span class="price"><span class='bx bx-bed'><?php echo $row["room_type"]; ?></span><br>
+                    <span class="price"><span class='bx bx-group'><?php echo $row["capacity"]; ?></span><br>
                     <a href="#divone"><button class="btn">Book Now</button></a>
-            </div>
-            <div class="room">
-                <a href="#divone"><img src="../image/5.13.jpg" alt="" class="room-img"></a>
-                    <h2 class="room-title">Room 104</h2>
-                    <span class="price">$100</span><br>
-                   <a href="#divone"> <button class="btn">Book Now</button></a>
-            </div>
-            <div class="room">
-                <a href="#divone"><img src="../image/5.15.jpg" alt="" class="room-img"></a>
-                    <h2 class="room-title">Room 103</h2>
-                    <span class="price">$120</span><br>
-                    <a href="#divone"><button class="btn">Book Now</button></a>
-            </div>
-            <div class="room">
-                <a href="#divone"><img src="../image/5.16.jpg" alt="" class="room-img"></a>
-                <h2 class="room-title">Room 103</h2>
-                <span class="price">$180</span><br>
-                <a href="#divone"><button class="btn">Book Now</button></a>
+                </div>
             </div>
         </div>
+        <?php
+            }
+        ?>
    </section>
    <div class="overlay" id="divone">
     <div class="wrapper">

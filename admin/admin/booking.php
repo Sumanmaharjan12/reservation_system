@@ -110,7 +110,7 @@ if (!isset($_SESSION['name'])) {
            
     ?>
     <tr>
-      <td><?=$row["Code"]?>
+      <td><?=$row["code"]?>
       <td><?=$row["email"]?>
       <td><?=$row["arrival"]?></td>
       <td><?=$row["arrival_time"]?></td>

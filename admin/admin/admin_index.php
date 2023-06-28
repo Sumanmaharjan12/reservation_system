@@ -27,7 +27,7 @@ if (!isset($_SESSION['name'])) {
                 </div>
                 <ul class="side-menu top">
                     <li>
-                        <a href="admin_index.php">
+                        <a href="admin_index.php" onclick="showbooking()">
                             <i class='bx bxs-dashboard'></i>
                             <span class="text">Dashboard</span>
                         </a>
@@ -135,6 +135,7 @@ if (!isset($_SESSION['name'])) {
                                 </span>
                             </li>
                         </ul>
+               
                         <div class="table-data">
                 <div class="order">
                      <h2>Admin</h2>
@@ -173,9 +174,35 @@ if (!isset($_SESSION['name'])) {
     }
     ?>
   </table>
+
 </div>
 </div>
-                       
+
+</section>
+</section> 
+        <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+                    const currentPage = window.location.pathname.split('/').pop(); // Get the current page URL
+                    console.log(currentPage);
+                    console.log(allSideMenu);
+                    allSideMenu.forEach(item => {
+                        const li = item.parentElement;
+                        console.log(li);
+
+                        if (item.getAttribute('href') === currentPage) {
+                            li.classList.add('active');
+                        }
+
+                        item.addEventListener('click', function () {
+                            allSideMenu.forEach(i => {
+                                i.parentElement.classList.remove('active');
+                            })
+                            li.classList.add('active');
+                        })
+                    });
+                });
+        </script>            
     </body>  
     </html>
     <?php

@@ -45,7 +45,7 @@ if (!isset($_SESSION['name'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="room.php">
+                        <a href="room.php" onclick="showbooking()">
                             <i class='bx bx-bed'></i>
                             <span class="text">Rooms</span>
                         </a>
@@ -145,6 +145,30 @@ if (!isset($_SESSION['name'])) {
                         </table>
                 </div>
              </div>
+             <script>
+
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+                        const currentPage = window.location.pathname.split('/').pop(); // Get the current page URL
+                        console.log(currentPage);
+                        console.log(allSideMenu);
+                        allSideMenu.forEach(item => {
+                            const li = item.parentElement;
+                            console.log(li);
+
+                            if (item.getAttribute('href') === currentPage) {
+                                li.classList.add('active');
+                            }
+
+                            item.addEventListener('click', function () {
+                                allSideMenu.forEach(i => {
+                                    i.parentElement.classList.remove('active');
+                                })
+                                li.classList.add('active');
+                            })
+                        });
+                    });
+            </script>
                 <?php
                 }
                 ?>

@@ -7,7 +7,7 @@
         $capacity=$_POST['capacity'];
         $filename = $_FILES["room_img"]["name"];
         $tempname = $_FILES["room_img"]["tmp_name"];
-        $folder = "../upload/" . $filename;
+        $folder = "../admin/upload/" . $filename;
      
      
         // Get all the submitted data from the form
@@ -18,10 +18,10 @@
      
         // Now let's move the uploaded image into the folder: image
         if (move_uploaded_file($tempname, $folder)) {
-            echo "<script> alter('Image added sucessfully'); window.location='../admin/room.php';</script>
+            echo "<script> alert('Image added sucessfully'); window.location='../admin/room.php';</script>
             ";
         } else {
-            echo "<script> alter('Image not added'); window.location='../admin/room.php';</script>
+            echo "<script> alert('Image not added'); window.location='../admin/room.php';</script>
             ";
         }
     }

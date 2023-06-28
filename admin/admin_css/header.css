@@ -23,6 +23,8 @@ html{
 /* Style the main content */
 section.main{
   width: 100%;
+  overflow: auto;
+  height: 691px;
 }
 .right-upper {
       display: flex;
@@ -360,10 +362,10 @@ h1{
 form {
   display: flex;
   flex-wrap: wrap;
-  margin-right: 5px;
+ 
   font-size: 15px;
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 label{
   margin-right: 5px;

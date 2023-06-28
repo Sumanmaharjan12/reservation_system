@@ -32,12 +32,13 @@ if (mysqli_num_rows($result) > 0) {
     // Looping through the results
     while ($row = mysqli_fetch_assoc($result)) {
         $records[$i] = array(
-            "Code" => $row['Code'],
+            "code" => $row['code'],
             "email" => $row['email'],
             "arrival" => $row['arrival'],
             "arrival_time" => $row['arrival_time'],
             "depature" => $row['depature'],
             "number" => $row['number'],
+            
         );
         $i++;
     }
@@ -64,7 +65,7 @@ if (mysqli_num_rows($result) > 0) {
                 foreach($records as $individual){
                     ?>
                     <tr>
-                        <td> <?=$individual['Code']; ?> </td>
+                        <td> <?=$individual['code']; ?> </td>
                          <td> <?=$individual['email']; ?> </td>
                          <td> <?=$individual['arrival']; ?> </td>
                          <td> <?=$individual['arrival_time']; ?> </td>

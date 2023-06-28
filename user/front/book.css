@@ -19,6 +19,20 @@ h1{
 .section{
     padding: 4rem 0 3rem;
 }
+.book{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+.detail{
+    text-align: center;
+    
+}
+.bx-bed{
+    margin-bottom: 15px;
+}
 .cross{
   float: right;
   width: 40px;
@@ -31,13 +45,17 @@ h1{
     text-align: center;
     margin-bottom: 2rem;
 }
-.room-content{
-    display: grid;
+/* .room-content{
+     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px,375px));
-    gap: 5rem;
+
+    gap: 4rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 
-}
+} */
 .room{
     position: relative;
     padding-left: 25px;
@@ -47,6 +65,7 @@ h1{
 .room:hover{
     transform: scale(1.1);
 }
+
 .room-img{
     width: 350px;
     height: 278px;

@@ -34,7 +34,7 @@ if (!isset($_SESSION['name'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="users.php">
+                        <a href="users.php" onclick="showbooking()">
                             <i class='bx bx-user'></i>
                             <span class="text">Customer</span>
                         </a>
