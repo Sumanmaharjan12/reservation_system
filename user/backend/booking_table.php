@@ -14,12 +14,17 @@ if (!isset($_SESSION['email'])) {
 $email= $_SESSION['email'];
 
 
+
 // Establish a database connection
 
 
 // Retrieve records for the logged-in user
-$query="select * from booking where email='$email'";
+$query="SELECT b.code, b.email, b.arrival, b.arrival_time, b.depature, b.number, b.status, r.room_no
+FROM booking b
+INNER JOIN room r ON b.room_no = r.room_no
+WHERE b.email = '$email'";
 $result = mysqli_query($conn, $query);
+
 
 // Check for errors
 if (!$result) {
@@ -38,11 +43,13 @@ if (mysqli_num_rows($result) > 0) {
             "arrival_time" => $row['arrival_time'],
             "depature" => $row['depature'],
             "number" => $row['number'],
-            
+            "status" => $row['status'],
+            "room_no" => $row['room_no'],
         );
         $i++;
     }
 }
+
 ?>
 <link rel="stylesheet" href="../backend_css/booking_table.css">
 <section class="booking" id="booking">
@@ -58,7 +65,8 @@ if (mysqli_num_rows($result) > 0) {
         <th>Time</th>
         <th>Depature Date</th>
         <th>Number of Person</th>
-        
+        <th>Room No</th>
+        <th>status</th>
     </thead>
     <tbody>
         <?php 
@@ -71,9 +79,11 @@ if (mysqli_num_rows($result) > 0) {
                          <td> <?=$individual['arrival_time']; ?> </td>
                          <td> <?=$individual['depature']; ?> </td>
                          <td> <?=$individual['number']; ?> </td>
+                         <td> <?=$individual['room_no']; ?> </td>
+                         <td> <?=$individual['status']; ?> </td>
                          <td>
                                 <a href='delete.php?email="<?=$individual['email']?>"' class="btn">Delete</a>
-                            </form>
+                           
                          </td>
                     </tr>
                     <?php

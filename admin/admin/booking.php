@@ -1,5 +1,5 @@
-
 <?php
+include('../admin_backend/connect.php');
 session_start();
 if (!isset($_SESSION['name'])) {
     header("Location: ../admin/admin_login.php");
@@ -99,6 +99,9 @@ if (!isset($_SESSION['name'])) {
                                 <th class="text-center">Arrival Time</th>
                                 <th class="text-center">Depature</th>
                                  <th class="text-center">Number</th>
+                                 <th class="text-center">Room No</th>
+                                 <th class="text-center">Status</th>
+                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
     <?php
@@ -116,6 +119,15 @@ if (!isset($_SESSION['name'])) {
       <td><?=$row["arrival_time"]?></td>
       <td><?=$row["depature"]?></td>
       <td><?=$row["number"]?></td>
+      <td><?=$row["room_no"]?></td>
+      <td><?=$row["status"]?></td>
+      <td>
+    <select onchange="updateStatus(this.value, '<?=$row['code']; ?>')">
+        <option value="Pending" <?php echo ($row["status"] == "Pending") ? "selected" : ""; ?>>Pending</option>
+        <option value="Confirmed" <?php echo ($row["status"] == "Confirmed") ? "selected" : ""; ?>>Confirmed</option>
+        <option value="Cancelled" <?php echo ($row["status"] == "Cancelled") ? "selected" : ""; ?>>Cancelled</option>
+    </select>
+</td>
       <td>
             <a href='../admin_backend/delete_booking.php?email="<?=$row['email']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>            
       </td>      
@@ -129,6 +141,7 @@ if (!isset($_SESSION['name'])) {
   </table>
 </div>
 </div>
+
             <script>
 
             document.addEventListener('DOMContentLoaded', function () {
@@ -152,6 +165,33 @@ if (!isset($_SESSION['name'])) {
                     })
                 });
             });
+        </script>
+
+        <script>
+                function updateStatus(status, code) {
+                // Create a new FormData object
+                var formData = new FormData();
+                
+                // Append the status and reservationId to the FormData object
+                formData.append('status', status);
+                formData.append('code', code);
+
+                // Create a new XMLHttpRequest object
+                var xhr = new XMLHttpRequest();
+                
+                // Set up the request
+                xhr.open('POST', '../admin_backend/update_status.php', true);
+
+                // Set the onload function
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    }
+                };
+                
+                // Send the request with the FormData
+                xhr.send(formData);
+                }
         </script>
 
     </body>

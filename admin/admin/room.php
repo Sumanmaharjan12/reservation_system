@@ -133,9 +133,9 @@ if (!isset($_SESSION['name'])) {
                             <td><?=$row["capacity"]?></td>
                             <td><img src="upload/<?php echo $row["room_image"]; ?>"width=80></td>
                             
-                            
                             <td>
-                                    <a href='../admin_backend/delete_user.php?email="<?=$row['room_no']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>            
+                                    <a href='../admin_backend/delete_room.php?room_no="<?=$row['room_no']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>            
+                                    <a href='../admin_backend/update_room.php?id="<?=$row['id']?>"' class="btn"><i class="bx bx-edit"></i></a>            
                             </td>      
                             </tr>
                             <?php    

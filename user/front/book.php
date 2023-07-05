@@ -30,7 +30,7 @@ $result = mysqli_query($conn, $query);
                     <h2 class="room-title"><span class='bx bx-room'><?php echo $row["room_no"]; ?></span></h2>
                     <span class="price"><span class='bx bx-bed'><?php echo $row["room_type"]; ?></span><br>
                     <span class="price"><span class='bx bx-group'><?php echo $row["capacity"]; ?></span><br>
-                    <a href="#divone"><button class="btn">Book Now</button></a>
+                    <a href="#divone" onclick="setRoomNo(<?php echo $row['room_no']; ?>)"><button class="btn">Book Now</button></a>
                 </div>
             </div>
         </div>
@@ -65,6 +65,13 @@ $result = mysqli_query($conn, $query);
                         <label for="number">Number of People</label>
                         <input type="number" name="number" id="number">
                     </div>
+                    <div class="input">
+                        <input type="hidden" name="status" value="Pending">
+                    </div>
+                    <div class="input">
+                        <input type="hidden" name="room_no" id="room_no">
+                    </div>
+                    <input type="hidden" name="status" value="Pending">
                         <button class="button" type="submit">Book</button>
                 </form>
             </div>
@@ -90,6 +97,11 @@ $result = mysqli_query($conn, $query);
                 else{
                     return true;
                 }
+            }
+        </script>
+        <script>
+            function setRoomNo(roomNo) {
+            document.getElementById("room_no").value = roomNo;
             }
         </script>
 </body>
