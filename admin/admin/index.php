@@ -25,6 +25,14 @@
                     <div class="btn">
                         <button  type="submit" onclick="checkInput(event)" name="login">Log In</button>
                     </div>
+                    <div class="message">
+                        <?php
+                            if(isset($_SESSION['error'])){
+                                echo $_SESSION['error'];
+                                unset($_SESSION['error']);
+                            }
+                            ?>
+                    </div>
              </form>
     </div>
     

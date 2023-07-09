@@ -67,12 +67,6 @@ if (!isset($_SESSION['name'])) {
 
             <section class="right-upper">
         <div class="right_about">
-        <div>
-            <p>
-                <?php echo $_SESSION['name']; ?>
-            </p>
-        </div>
-
         <div class="profile">
             <img src="../images/avatar.jpg" alt="Avatar" class="avatar">
         </div>
@@ -140,7 +134,7 @@ if (!isset($_SESSION['name'])) {
                 <div class="order">
                      <h2>Admin</h2>
 
-                     <a href="" class="btn"><i class="bx bx-plus add-icon"></i></a>       
+                     <a href="#divone" class="btn"><i class="bx bx-plus add-icon"></i></a>       
                     <table class="table" border="2px">
                         <thead>
                             <tr>
@@ -180,6 +174,35 @@ if (!isset($_SESSION['name'])) {
 
 </section>
 </section> 
+<div class="overlay" id="divone">
+    <div class="wrapper">
+        <h2>Please Fill up the Form</h2>
+        <a href="#"class="close">&times;</a>
+        <div class="content">
+            <div class="container">
+                <form action="../admin_backend/add_admin.php" method="POST">
+                    <div class="input">
+                        <label for="name">Name:</label><br>
+                        <input type="name" name="name" id="name"required>
+                    </div>
+                    <div class="input">
+                        <label for="email">Email:</label><br>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="input">
+                        <label for="date">Date of Birth:</label><br>
+                        <input type="date" name="date" id="date">
+                    </div>
+                    <div class="input">
+                        <label for="number">Phone Number:</label>
+                        <input type="text" name="number" id="number">
+                    </div>
+                        <button class="button" type="submit">Book</button>
+                </form>
+            </div>
+        </div>
+    </div>
+   </div>
         <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
@@ -202,7 +225,13 @@ if (!isset($_SESSION['name'])) {
                         })
                     });
                 });
-        </script>            
+        </script>        
+        <div class="notification">
+                <p> Welcome,
+                    <?php echo $_SESSION['name'] ?>
+                </p>
+                <span class="notification_progress"></span>
+            </div>    
     </body>  
     </html>
     <?php

@@ -10,7 +10,7 @@ if (!isset($_SESSION['name'])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="../admin_css/header.css">
+        <link rel="stylesheet" href="../admin_css/room.css">
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css'>
@@ -135,7 +135,7 @@ if (!isset($_SESSION['name'])) {
                             
                             <td>
                                     <a href='../admin_backend/delete_room.php?room_no="<?=$row['room_no']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>            
-                                    <a href='../admin_backend/update_room.php?id="<?=$row['id']?>"' class="btn"><i class="bx bx-edit"></i></a>            
+                                    <a href='update_room.php?id="<?=$row['id']?>"' class="btn"><i class="bx bx-edit"></i></a>            
                             </td>      
                             </tr>
                             <?php    

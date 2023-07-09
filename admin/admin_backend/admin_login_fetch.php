@@ -6,7 +6,10 @@
             $password=$_POST['password'];
             // $name=$_POST['name'];
     }
-        $sql="SELECT * FROM admin where name='$name' AND password='$password' ";
+        $sql="SELECT t1.name, t2.name
+        FROM admin t1
+        JOIN admin_detail t2 ON t1.name = t2.name
+        WHERE t1.name = '$name';";
         $result= mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($result)==1){
@@ -15,9 +18,11 @@
             header("location:../admin/admin_index.php");
         }
         else{
-            echo"
-            <script> alert('wrong password!'); window.location='../admin/admin_login.php';</script>
-            ";
+            // echo"
+            // <script> alert('No account found'); window.location='../admin/admin_index.php';</script>
+            // ";
+            $_SESSION['error']="Incorrect username or password";
+            header("location:../admin/index.php");
         }
         mysqli_close($conn);
 ?>

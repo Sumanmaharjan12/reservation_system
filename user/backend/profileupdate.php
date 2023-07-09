@@ -2,9 +2,9 @@
 include("connect.php");
 
 if ($_POST) {
-    $name=$_POST['name'];
-    $email=$_POST['email'];
-    $date=date('Y-m-d',strtotime($_POST['date']));
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $date = date('Y-m-d', strtotime($_POST['date']));
     $sql = "UPDATE sign SET name = '$name', email = '$email', date = '$date' WHERE `email`= '$email' ";
     if (mysqli_query($conn, $sql)) {
         // echo "Record updated successfully.";

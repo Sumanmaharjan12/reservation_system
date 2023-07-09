@@ -1,4 +1,4 @@
- *{
+*{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@
     text-decoration: none;
 }
 body{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(../image/5.17.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(../image/signup.jpg);
 }
 h1{
     color: white;
@@ -115,7 +115,6 @@ h1{
 .wrapper{
     margin: 80px auto;
     padding: 20px;
-    background-image:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(image/5.18.jpg);
     background-size: cover;
     border-radius: 5px;
     width: 30%;

@@ -110,6 +110,12 @@ if (!isset($_SESSION['name'])) {
       $result = mysqli_query($conn, $query);
       if (mysqli_num_rows($result) > 0) {
         while ($row=mysqli_fetch_assoc($result)) {
+            $currentDateTime = date("Y-m-d H:i:s");
+
+            // Check if the booking has expired
+            if ($currentDateTime > $row["depature"]) {
+                continue; // Skip this booking if it has expired
+            }
            
     ?>
     <tr>

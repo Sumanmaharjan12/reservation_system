@@ -41,12 +41,14 @@ h1{
     flex: 1;
     margin-right: 40px;
     overflow: hidden;
+    border-radius: 20px;
 }
 .about_img img{
     max-width:  100%;
     height: auto;
     display: block;
     transition: 0.5s ease;
+    border-radius: 20px;
 }
 .about_img:hover img{
     transform: scale(1.2);

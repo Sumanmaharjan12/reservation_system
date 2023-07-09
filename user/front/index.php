@@ -1,28 +1,33 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
-    <div class="nav">
-        <img src="../image/2.png" alt="" class="img">
-        <a href="login.php">Login</a>
-        <a href="SignUp.php">SignUp</a>
-    </div>
-    <div class="slider">
+  <div class="nav">
+    <img src="../image/2.png" alt="" class="img">
+    <a href="login.php">Login</a>
+    <a href="SignUp.php">SignUp</a>
+  </div>
+  <div class="slider">
 
-    </div>
-    <section class="info">
-        <p>Want to Book Room?</p>
-        <a href="login.php"><button class="arrow">Book Now</button></href></a>
-    </section>
-    <footer class="footer">
+  </div>
+  <section class="info">
+    <p>Want to Book Room?</p>
+    <a href="login.php"><button class="arrow">Book Now</button></href></a>
+  </section>
+  <footer class="footer">
     <div class="footer_containerleft">
       <img src="../image/2.png" alt="">
     </div>
@@ -64,4 +69,5 @@
 
   </footer>
 </body>
+
 </html>

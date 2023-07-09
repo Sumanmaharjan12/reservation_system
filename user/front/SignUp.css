@@ -1,7 +1,7 @@
 body{
     background-color: rgb(157, 226, 226);
     font-family: 'Roboto',sans-serif;
-    background-image: linear-gradient(rgba(96, 93, 93, 0.5),rgba(71, 70, 70, 0.5)),url(../image/5.9.jpg);
+    background-image: linear-gradient(rgba(96, 93, 93, 0.5),rgba(71, 70, 70, 0.5)),url(../image/signup.jpg);
     background-size: cover;
 
 }

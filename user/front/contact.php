@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="contact.css">
 </head>
+
 <body>
-   <div class="container">
+    <div class="container">
         <div class="item">
             <div class="contact">
                 <div class="first">
@@ -24,30 +26,31 @@
                     </ul>
                 </div>
             </div>
-                
-                <div class="submit">    
+
+            <div class="submit">
                 <a href="homepage.php" class="cross">&times;</a>
-                    <h4 class="third">Contact US</h4>
-                        <form action="../backend/send_email.php" method="post">
-                            <div class="input_box">
-                                <input type="text" class="input"  required>
-                                <label for="">Name</label>
-                            </div>
-                            <div class="input_box">
-                                <input type="email" class="input" required>
-                                <label for="">Email</label>
-                            </div>
-                            <div class="input_box">
-                                <input type="tel" class="input"required>
-                                <label for="">Phone</label>
-                            </div>
-                            <div class="input_box">
-                                <textarea class="input" id="message" cols="30" rows="10" required></textarea>
-                                <label for="">Message</label>
-                            </div>
-                           <button class="btn">Submit</button>
-                        </form>
+                <h4 class="third">Contact US</h4>
+                <form action="../backend/send_email.php" method="post">
+                    <div class="input_box">
+                        <input type="text" class="input" required>
+                        <label for="">Name</label>
+                    </div>
+                    <div class="input_box">
+                        <input type="email" class="input" required>
+                        <label for="">Email</label>
+                    </div>
+                    <div class="input_box">
+                        <input type="tel" class="input" required>
+                        <label for="">Phone</label>
+                    </div>
+                    <div class="input_box">
+                        <textarea class="input" id="message" cols="30" rows="10" required></textarea>
+                        <label for="">Message</label>
+                    </div>
+                    <button class="btn">Submit</button>
+                </form>
+            </div>
         </div>
-   </div>
 </body>
+
 </html>
