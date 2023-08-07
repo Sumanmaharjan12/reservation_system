@@ -1,8 +1,8 @@
 <?php
 include('connect.php');
-if (isset($_GET['email'])) {
-    $email = $_GET['email'];
-    $query = "Delete from booking where email=$email";
+if (isset($_GET['code'])) {
+    $code = $_GET['code'];
+    $query = "Delete from booking where code=$code";
     $result = mysqli_query($conn, $query);
 
     if ($result) {

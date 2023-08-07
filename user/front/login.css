@@ -9,11 +9,13 @@ body{
 }
 .cross{
     float: right;
-    width: 40px;
-    font-size: 50px;
+    width: 0px;
+    font-size: 33px;
     color: red;
+    margin-top: -40px;
     text-decoration: none;
-  }
+    margin-right: -27px;
+}
 .container{
     width: 100%;
     height: 100vh;

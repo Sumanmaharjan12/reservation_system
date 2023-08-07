@@ -362,11 +362,38 @@ h1{
 form {
   display: flex;
   flex-wrap: wrap;
- 
   font-size: 15px;
   margin-top: 20px;
   margin-bottom: 0px;
 }
+.form{
+  width: 99%;
+  background: #333;
+  margin-left: 4px;
+}
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-row label {
+  width: 140px;
+  margin-right: 10px;
+  flex: 0 0 120px;
+  white-space: nowrap;
+
+}
+
+.form-row input[type="text"],
+.form-row input[type="number"],
+.form-row input[type="file"] {
+  flex: 1;
+  width: 89px;
+  margin: 17px 12px 6px -4px;
+  padding: 3px;
+}
+
 label{
   margin-right: 5px;
 }
@@ -378,8 +405,9 @@ input[type="number"] {
 input[type="submit"] {
   border-radius: 10px;
   cursor: pointer;
-  margin-left: -30px;
+  margin-left: 25px;
   font-size: 15px;
+  margin-top: 15px;
 }
 input[type="submit"]:hover{
   color: white;

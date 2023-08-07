@@ -1,174 +1,125 @@
 <?php
-session_start();
-if (!isset($_SESSION['name'])) {
-    header("Location: ../admin/admin_login.php");
-} else {
-    ?>  
-<html>
-<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="../admin_css/room.css">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css'>
-    </head>
-
-    <body>
-        
-        <div class="dashboard"> <!-- dashboard begins ------------------------------------------------------------------->
-        <!-- SIDEBAR -->
-            <section id="sidebar">
-                <div class="icon1">
-                    <a href="admin_index.php"><img src="../images/admin.png" alt="Logo1">
-                    </a>
-                </div>
-                <ul class="side-menu top">
-                    <li>
-                        <a href="admin_index.php">
-                            <i class='bx bxs-dashboard'></i>
-                            <span class="text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="users.php">
-                            <i class='bx bx-user'></i>
-                            <span class="text">Customer</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="booking.php">
-                            <i class='bx bx-time'></i>
-                            <span class="text">Booking</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="room.php" onclick="showbooking()">
-                            <i class='bx bx-bed'></i>
-                            <span class="text">Rooms</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="side-menu">
-                   
-                    <li>
-                        <a href="../admin_backend/logout.php" class="logout">
-                            <i class='bx bxs-log-out-circle'></i>
-                            <span class="text">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </section>
-            
-
-            <section class="main"> <!-- main section begins ------------------------------------------------------------>
-
-            <section class="right-upper">
-        <div class="right_about">
-        <div>
-            <p>
-                <?php echo $_SESSION['name']; ?>
-            </p>
+require_once("admin_template.php");
+?>
+<div class="form">
+    <form action="../admin_backend/add_room.php" method="POST" enctype="multipart/form-data">
+        <div class="form-row">
+            <label for="room_number">Room No:</label>
+            <input type="text" id="room_no" name="room_no" required>
         </div>
-
-        <div class="profile">
-            <img src="../images/avatar.jpg" alt="Avatar" class="avatar">
+        <div class="form-row">
+            <label for="room_type">Room Type:</label>
+            <input type="text" id="room_type" name="room_type" required>
         </div>
+        <div class="form-row">
+            <label for="capacity">Capacity:</label>
+            <input type="number" id="capacity" name="capacity" required>
+        </div>
+        <div class="form-row">
+            <label for="room_image">Room Image:</label>
+            <input type="file" name="room_img" accept=".jpg, .png, .jpeg" required>
+        </div>
+        <div class="form-row">
+            <input type="submit" value="Add Room" name="save_room_image">
+        </div>
+    </form>
+</div>
 
-        <div class="notification_icon">
-            <button class="notification_btn" title="Notification">
-                <a href="#"> <span class="material-symbols-outlined">notifications</span>
-                </a>
-            </button>
-                </div>
-             </div>
-            </section>
-            <html>
-            <head>
-                <title></title>
-            </head>
-            <body>
-                <form action="../admin_backend/add_room.php" method="POST" enctype="multipart/form-data">
-                    <label for="room_number">Room No:</label>
-                    <input type="text" id="room_no" name="room_no" required>
-        
-                    <label for="room_type">Room Type:</label>
-                    <input type="text" id="room_type" name="room_type" required>
-        
-                    <label for="capacity">Capacity:</label>
-                    <input type="number" id="capacity" name="capacity" required>
-                    <label for="room_image">Room Image:</label>
-                    <input type="file" name="room_img" accept=".jpg, .png, .jpeg" required>
-        
-                    <input type="submit" value="Add Room" name="save_room_image">
-                </form> 
-           
-        <div class="table-data">
-                <div class="order">
-                     <h1>ROOMS</h1>
-                        <table class="table" border="2px">
-                        <thead>
-                            <tr>
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Room No</th>
-                                <th class="text-center">Room Type </th>
-                                 <th class="text-center">Capacity</th>
-                                 <th class="text-center">Image</th>
-                            </tr>
-                        </thead>
-                            <?php
-                            include_once "../admin_backend/connect.php";
-                            $query="select * from room";
-                            $result = mysqli_query($conn, $query);
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row=mysqli_fetch_assoc($result)) {
-                                
-                            ?>
-                            <tr>
-                                <td><?=$row["id"]?>
-                            <td><?=$row["room_no"]?>
-                            <td><?=$row["room_type"]?>
-                            <td><?=$row["capacity"]?></td>
-                            <td><img src="upload/<?php echo $row["room_image"]; ?>"width=80></td>
-                            
-                            <td>
-                                    <a href='../admin_backend/delete_room.php?room_no="<?=$row['room_no']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>            
-                                    <a href='update_room.php?id="<?=$row['id']?>"' class="btn"><i class="bx bx-edit"></i></a>            
-                            </td>      
-                            </tr>
-                            <?php    
-                                }
-                            }
-                            ?>
-                        </table>
-                </div>
-             </div>
-             <script>
+<div class="table-data">
+    <div class="order">
+        <h1>ROOMS</h1>
+        <table class="table" border="2px">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Room No</th>
+                    <th class="text-center">Room Type </th>
+                    <th class="text-center">Capacity</th>
+                    <th class="text-center">Image</th>
+                    <th class="text-center">Status</th>
+                </tr>
+            </thead>
 
-                    document.addEventListener('DOMContentLoaded', function () {
-                        const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-                        const currentPage = window.location.pathname.split('/').pop(); // Get the current page URL
-                        console.log(currentPage);
-                        console.log(allSideMenu);
-                        allSideMenu.forEach(item => {
-                            const li = item.parentElement;
-                            console.log(li);
+            <?php
+            include_once "../admin_backend/connect.php";
 
-                            if (item.getAttribute('href') === currentPage) {
-                                li.classList.add('active');
-                            }
+            // Fetch room data
+            $roomQuery = "SELECT * FROM room";
+            $roomResult = mysqli_query($conn, $roomQuery);
 
-                            item.addEventListener('click', function () {
-                                allSideMenu.forEach(i => {
-                                    i.parentElement.classList.remove('active');
-                                })
-                                li.classList.add('active');
-                            })
-                        });
-                    });
-            </script>
-                <?php
+            if (mysqli_num_rows($roomResult) > 0) {
+                while ($roomRow = mysqli_fetch_assoc($roomResult)) {
+                    // Fetch booking status for the current room
+                    $bookingQuery = "SELECT status FROM booking WHERE room_no= " . $roomRow['room_no'];
+                    $bookingResult = mysqli_query($conn, $bookingQuery);
+
+                    if ($bookingResult && mysqli_num_rows($bookingResult) > 0) {
+                        $bookingRow = mysqli_fetch_assoc($bookingResult);
+                        $bookingStatus = $bookingRow['status'];
+
+                        // Set display status based on the booking status
+                        $displayStatus = $bookingStatus === 'Confirmed' ? 'Booked' : 'Available';
+                    } else {
+                        $displayStatus = 'Available';
+                    }
+                    ?>
+                    <tr>
+                        <td>
+                            <?= $roomRow["id"] ?>
+                        </td>
+                        <td>
+                            <?= $roomRow["room_no"] ?>
+                        </td>
+                        <td>
+                            <?= $roomRow["room_type"] ?>
+                        </td>
+                        <td>
+                            <?= $roomRow["capacity"] ?>
+                        </td>
+                        <td><img src="upload/<?php echo $roomRow["room_image"]; ?>" width="80"></td>
+                        <td>
+                            <?= $displayStatus ?>
+                        </td>
+                        <td>
+                            <a href='../admin_backend/delete_room.php?room_no="<?= $roomRow['room_no'] ?>"' class="btn"><i
+                                    class="bx bx-trash delete-icon"></i></a>
+                            <a href='update_room.php?id="<?= $roomRow['id'] ?>"' class="btn"><i class="bx bx-edit"></i></a>
+                        </td>
+                    </tr>
+                    <?php
                 }
-                ?>
+            }
+            ?>
+
+        </table>
+    </div>
+</div>
+</section>
+</section>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+        const currentPage = window.location.pathname.split('/').pop(); // Get the current page URL
+        console.log(currentPage);
+        console.log(allSideMenu);
+        allSideMenu.forEach(item => {
+            const li = item.parentElement;
+            console.log(li);
+
+            if (item.getAttribute('href') === currentPage) {
+                li.classList.add('active');
+            }
+
+            item.addEventListener('click', function () {
+                allSideMenu.forEach(i => {
+                    i.parentElement.classList.remove('active');
+                })
+                li.classList.add('active');
+            })
+        });
+    });
+</script>
+</body>
+
+</html>

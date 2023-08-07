@@ -30,24 +30,24 @@
             <div class="submit">
                 <a href="homepage.php" class="cross">&times;</a>
                 <h4 class="third">Contact US</h4>
-                <form action="../backend/send_email.php" method="post">
+                <form action="../backend/sendemail.php" method="post">
                     <div class="input_box">
-                        <input type="text" class="input" required>
+                        <input type="text" class="input" name="name" required>
                         <label for="">Name</label>
                     </div>
                     <div class="input_box">
-                        <input type="email" class="input" required>
+                        <input type="email" class="input" name="email" required>
                         <label for="">Email</label>
                     </div>
                     <div class="input_box">
-                        <input type="tel" class="input" required>
+                        <input type="tel" class="input" name="phone" required>
                         <label for="">Phone</label>
                     </div>
                     <div class="input_box">
-                        <textarea class="input" id="message" cols="30" rows="10" required></textarea>
+                        <textarea class="input" id="message" cols="30" rows="10" name="message" required></textarea>
                         <label for="">Message</label>
                     </div>
-                    <button class="btn">Submit</button>
+                    <button class="btn" type="submit">Submit</button>
                 </form>
             </div>
         </div>

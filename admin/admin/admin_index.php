@@ -1,105 +1,27 @@
 <?php
-session_start();
-if (!isset($_SESSION['name'])) {
-    header("Location: ../admin/admin_login.php");
-} else {
-    ?>  
-<html>
-<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="../admin_css/header.css">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css'>
-    </head>
-
-    <body>
-        
-        <div class="dashboard"> <!-- dashboard begins ------------------------------------------------------------------->
-        <!-- SIDEBAR -->
-            <section id="sidebar">
-                <div class="icon1">
-                    <a href="admin_index.php"><img src="../images/admin.png" alt="Logo1">
-                    </a>
-                </div>
-                <ul class="side-menu top">
-                    <li>
-                        <a href="admin_index.php" onclick="showbooking()">
-                            <i class='bx bxs-dashboard'></i>
-                            <span class="text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="users.php">
-                            <i class='bx bx-user'></i>
-                            <span class="text">Customer</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="booking.php">
-                            <i class='bx bx-time'></i>
-                            <span class="text">Booking</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="room.php">
-                            <i class='bx bx-bed'></i>
-                            <span class="text">Rooms</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="side-menu">
-                    
-                    <li>
-                        <a href="../admin_backend/logout.php" >
-                            <i class='bx bxs-log-out-circle'></i>
-                            <span class="text">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </section>
-            
-
-            <section class="main"> <!-- main section begins ------------------------------------------------------------>
-
-            <section class="right-upper">
-        <div class="right_about">
-        <div class="profile">
-            <img src="../images/avatar.jpg" alt="Avatar" class="avatar">
-        </div>
-
-        <div class="notification_icon">
-            <button class="notification_btn" title="Notification">
-                <a href="#"> <span class="material-symbols-outlined">notifications</span>
-                </a>
-            </button>
-                </div>
-             </div>
-            </section>
-            <section class="right-lower">
+require_once ("admin_template.php");
+?>
+                    <section class="right-lower">
                         <ul class="box-info">
-                        <?php
+                            <?php
                             include "../admin_backend/connect.php";
                             //Display the student count 
                             $query = "SELECT COUNT(*) AS user_count FROM sign";
                             $result = mysqli_query($conn, $query);
                             $row = mysqli_fetch_assoc($result);
-                            $userCount= $row['user_count'];
+                            $userCount = $row['user_count'];
 
                             //Display the Admin Count
                             $query = "SELECT COUNT(*) as admin_count FROM admin_detail";
                             $result = mysqli_query($conn, $query);
                             $row = mysqli_fetch_assoc($result);
-                            $adminCount= $row['admin_count'];
+                            $adminCount = $row['admin_count'];
 
                             //Display the Total Count
                             $query = "SELECT COUNT(*) as total_booking FROM booking";
                             $result = mysqli_query($conn, $query);
                             $row = mysqli_fetch_assoc($result);
-                            $bookingCount= $row['total_booking'];
+                            $bookingCount = $row['total_booking'];
                             ?>
                             <li>
                                 <i class='bx bx-user user-icon'></i>
@@ -129,111 +51,117 @@ if (!isset($_SESSION['name'])) {
                                 </span>
                             </li>
                         </ul>
-               
+
                         <div class="table-data">
-                <div class="order">
-                     <h2>Admin</h2>
+                            <div class="order">
+                                <h2>Admin</h2>
 
-                     <a href="#divone" class="btn"><i class="bx bx-plus add-icon"></i></a>       
-                    <table class="table" border="2px">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Name</th>
-                                <th class="text-center">Email </th>
-                                 <th class="text-center">Date of Birth</th>
-                                <th class="text-center">Phone Number</th>
-                            </tr>
-                        </thead>
-    <?php
-      include_once "../admin_backend/connect.php";
-      $query="select * from admin_detail";
-      $result = mysqli_query($conn, $query);
-      if (mysqli_num_rows($result) > 0) {
-        while ($row=mysqli_fetch_assoc($result)) {
-           
-    ?>
-    <tr>
-      <td><?=$row["name"]?>
-      <td><?=$row["email"]?>
-      <td><?=$row["date"]?></td>
-      <td><?=$row["number"]?></td>
-      <td>
-            <a href='../admin_backend/delete_admin.php?email="<?=$row['email']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>             
-      </td>       
-    </tr>
-    <?php
+                                <a href="#divone" class="btn"><i class="bx bx-plus add-icon"></i></a>
+                                <table class="table" border="2px">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center">Email </th>
+                                            <th class="text-center">Date of Birth</th>
+                                            <th class="text-center">Phone Number</th>
+                                        </tr>
+                                    </thead>
+                                    <?php
+                                    include_once "../admin_backend/connect.php";
+                                    $query = "select * from admin_detail";
+                                    $result = mysqli_query($conn, $query);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
 
-           
-        }
-    }
-    ?>
-  </table>
+                                            ?>
+                                            <tr>
+                                                <td>
+                                                    <?= $row["name"] ?>
+                                                <td>
+                                                    <?= $row["email"] ?>
+                                                <td>
+                                                    <?= $row["date"] ?>
+                                                </td>
+                                                <td>
+                                                    <?= $row["number"] ?>
+                                                </td>
+                                                <td>
+                                                    <a href='../admin_backend/delete_admin.php?email="<?= $row['email'] ?>"'
+                                                        class="btn"><i class="bx bx-trash delete-icon"></i></a>
+                                                </td>
+                                            </tr>
+                                            <?php
 
-</div>
-</div>
 
-</section>
-</section> 
-<div class="overlay" id="divone">
-    <div class="wrapper">
-        <h2>Please Fill up the Form</h2>
-        <a href="#"class="close">&times;</a>
-        <div class="content">
-            <div class="container">
-                <form action="../admin_backend/add_admin.php" method="POST">
-                    <div class="input">
-                        <label for="name">Name:</label><br>
-                        <input type="name" name="name" id="name"required>
+                                        }
+                                    }
+                                    ?>
+                                </table>
+                            </div>
+                        </div>
+
+                    </section><!-- right lower -->
+                    </section><!-- content -->
+                </section><!-- main -->
+                <div class="overlay" id="divone">
+                    <div class="wrapper">
+                        <h2>Please Fill up the Form</h2>
+                        <a href="#" class="close">&times;</a>
+                        <div class="content">
+                            <div class="container">
+                                <form action="../admin_backend/add_admin.php" method="POST">
+                                    <div class="input">
+                                        <label for="name">Name:</label><br>
+                                        <input type="name" name="name" id="name" required>
+                                    </div>
+                                    <div class="input">
+                                        <label for="email">Email:</label><br>
+                                        <input type="email" name="email" id="email" required>
+                                    </div>
+                                    <div class="input">
+                                        <label for="date">Date of Birth:</label><br>
+                                        <input type="date" name="date" id="date">
+                                    </div>
+                                    <div class="input">
+                                        <label for="number">Phone Number:</label>
+                                        <input type="text" name="number" id="number">
+                                    </div>
+                                    <button class="button" type="submit">Book</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="input">
-                        <label for="email">Email:</label><br>
-                        <input type="email" name="email" id="email" required>
-                    </div>
-                    <div class="input">
-                        <label for="date">Date of Birth:</label><br>
-                        <input type="date" name="date" id="date">
-                    </div>
-                    <div class="input">
-                        <label for="number">Phone Number:</label>
-                        <input type="text" name="number" id="number">
-                    </div>
-                        <button class="button" type="submit">Book</button>
-                </form>
-            </div>
-        </div>
-    </div>
-   </div>
-        <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-                    const currentPage = window.location.pathname.split('/').pop(); // Get the current page URL
-                    console.log(currentPage);
-                    console.log(allSideMenu);
-                    allSideMenu.forEach(item => {
-                        const li = item.parentElement;
-                        console.log(li);
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+                        const currentPage = window.location.pathname.split('/').pop(); // Get the current page URL
+                        console.log(currentPage);
+                        console.log(allSideMenu);
+                        allSideMenu.forEach(item => {
+                            const li = item.parentElement;
+                            console.log(li);
 
-                        if (item.getAttribute('href') === currentPage) {
-                            li.classList.add('active');
-                        }
+                            if (item.getAttribute('href') === currentPage) {
+                                li.classList.add('active');
+                            }
 
-                        item.addEventListener('click', function () {
-                            allSideMenu.forEach(i => {
-                                i.parentElement.classList.remove('active');
+                            item.addEventListener('click', function () {
+                                allSideMenu.forEach(i => {
+                                    i.parentElement.classList.remove('active');
+                                })
+                                li.classList.add('active');
                             })
-                            li.classList.add('active');
-                        })
+                        });
                     });
-                });
-        </script>        
-        <div class="notification">
-                <p> Welcome,
-                    <?php echo $_SESSION['name'] ?>
-                </p>
-                <span class="notification_progress"></span>
-            </div>    
-    </body>  
+                </script>
+                <div class="notification">
+                    <p> Welcome,
+                        <?php echo $_SESSION['name'] ?>
+                    </p>
+                    <span class="notification_progress"></span>
+                </div>
+    </body>
+
     </html>
-    <?php
-}
-?>
+ 

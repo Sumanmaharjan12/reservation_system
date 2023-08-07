@@ -1,8 +1,10 @@
 <?php
+session_start();
 include('../backend/connect.php');
 $query = "select * from room";
 $result = mysqli_query($conn, $query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,18 +18,29 @@ $result = mysqli_query($conn, $query);
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="homepage.php"><img src="../image/2.png" alt=""></a>
+            <p>Book Now</p>
+        </div>
+        <div class="search-bar">
+            <form action="../backend/search.php" method="get">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class='bx bx-search'></i></button>
+                <a href="homepage.php" class="close">&times;</a>
+            </form>
+        </div>
+    </nav>
     <div class="header">
 
     </div>
-    <a href="homepage.php" class="cross">&times;</a>
-    <h1 class="now">Book Now</h1>
     <section class="book">
         <?php
         while ($row = mysqli_fetch_assoc($result)) {
             ?>
             <div class="room-content">
                 <div class="room">
-                    <a href="#divone"><img src="../../admin/admin/upload/<?php echo $row["room_image"]; ?>" alt=""
+                    <a href="#divone-<?php echo $row['room_no']; ?>"><img src="../../admin/admin/upload/<?php echo $row["room_image"]; ?>" alt=""
                             class="room-img"></a>
                     <div class="detail">
                         <h2 class="room-title"><span class='bx bx-room'>
@@ -39,7 +52,7 @@ $result = mysqli_query($conn, $query);
                             <span class="price"><span class='bx bx-group'>
                                     <?php echo $row["capacity"]; ?>
                                 </span><br>
-                                <a href="#divone" onclick="setRoomNo(<?php echo $row['room_no']; ?>)"><button
+                                <a href="#divone-<?php echo $row['room_no']; ?>" onclick="setRoomNo(<?php echo $row['room_no']; ?>)"><button
                                         class="btn">Book Now</button></a>
                     </div>
                 </div>
@@ -48,50 +61,64 @@ $result = mysqli_query($conn, $query);
         }
         ?>
     </section>
-    <div class="overlay" id="divone">
-        <div class="wrapper">
-            <h2>Please Fill up the Form</h2>
-            <a href="#" class="close">&times;</a>
-            <div class="content">
-                <div class="container">
-                    <form action="../backend/booking.php" method="POST" onsubmit="return validate()">
-                        <div class="input">
-                            <label for="email">Email:</label><br>
-                            <input type="email" name="email" id="email" required>
-                        </div>
-                        <div class="input">
-                            <label for="date">Arrirval Date:</label><br>
-                            <input type="date" name="arrival" id="arrival" required>
-                        </div>
-                        <div class="input">
-                            <label for="time">time:</label><br>
-                            <input type="time" name="arrival_time" id="arrival_time">
-                        </div>
-                        <div class="input">
-                            <label for="date">Depature Date</label>
-                            <input type="date" name="depature" id="depature">
-                        </div>
-                        <div class="input">
-                            <label for="number">Number of People</label>
-                            <input type="number" name="number" id="number" min="1">
-                        </div>
-                        <div class="input">
-                            <input type="hidden" name="status" value="Pending">
-                        </div>
-                        <div class="input">
-                            <input type="hidden" name="room_no" id="room_no">
-                        </div>
-                        <input type="hidden" name="status" value="Pending">
-                        <button class="button" type="submit">Book</button>
-                    </form>
+
+    <?php
+    mysqli_data_seek($result, 0); // Reset the result pointer to the beginning
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+        <div class="overlay" id="divone-<?php echo $row['room_no']; ?>">
+            <div class="wrapper">
+                <h2>Please Fill up the Form</h2>
+                <a href="#" class="close">&times;</a>
+                <div class="content">
+                    <div class="container">
+                        <?php
+                        $email = $_SESSION['email'];
+                        ?>
+                        <form action="../backend/booking.php" method="POST" onsubmit="return validate()">
+                            <div class="input">
+                                <?php if (isset($email)) { ?>
+                                    <input type="hidden" name="email" id="email" value="<?= $email ?>" required>
+                                <?php } ?>
+                            </div>
+                            <div class="input">
+                                <label for="date">Arrival Date:</label><br>
+                                <input type="date" name="arrival" id="arrival" required>
+                            </div>
+                            <div class="input">
+                                <label for="time">Time:</label><br>
+                                <input type="time" name="arrival_time" id="arrival_time">
+                            </div>
+                            <div class="input">
+                                <label for="date">Departure Date:</label><br>
+                                <input type="date" name="depature" id="depature">
+                            </div>
+                            <div class="input">
+                                <label for="number">Number of People:</label><br>
+                                <input type="number" name="number" id="number-<?php echo $row['room_no']; ?>"
+                                       value="<?php echo $row['capacity']; ?>" readonly>
+                            </div>
+                            <div class="input">
+                                <input type="hidden" name="status" value="Pending">
+                            </div>
+                            <div class="input">
+                                <input type="hidden" name="room_no" id="room_no-<?php echo $row['room_no']; ?>">
+                            </div>
+                            <button class="button" type="submit">Book</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <?php
+    }
+    ?>
+
     <script>
         function validate() {
             var inputDate = document.getElementById("arrival").value;
-            var inputDate1 = document.getElementById("depature").value;
+            var inputDate1 = document.getElementById("departure").value;
             var select = new Date(inputDate);
             var select1 = new Date(inputDate1);
             var current = new Date();
@@ -99,19 +126,16 @@ $result = mysqli_query($conn, $query);
             if (select < current) {
                 alert("You cannot book on a past date.");
                 return false;
-            }
-            else if (select1 < current1) {
+            } else if (select1 < current1) {
                 alert("You cannot book on a past date.");
                 return false;
-            }
-            else {
+            } else {
                 return true;
             }
         }
-    </script>
-    <script>
+
         function setRoomNo(roomNo) {
-            document.getElementById("room_no").value = roomNo;
+            document.getElementById("room_no-" + roomNo).value = roomNo;
         }
     </script>
 

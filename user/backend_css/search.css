@@ -1,0 +1,284 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background-image:url(../image/signup.jpg);
+    
+}
+
+/* Navbar */
+.navbar {
+    background-color: #040404;
+    color: white;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo p {
+    font-size: 20px;
+    color: #f7f1f1;
+    margin-top: -36px;
+    margin-bottom: 30px;
+    margin-left: 70px;
+}
+
+.logo img {
+    width: 55px;
+    height: 50px;
+    border-radius: 100px;
+    margin-top: 7px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    width: 200px;
+}
+
+.search-bar button {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Rest of your existing CSS styles */
+
+h1 {
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3rem;
+}
+
+.section {
+    padding: 4rem 0 3rem;
+}
+.close{
+    float: right;
+    width: 25px;
+    font-size: 35px;
+    color: red;
+    text-decoration: none;
+  }
+
+.book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+
+.detail {
+    text-align: center;
+}
+
+.bx-bed {
+    margin-bottom: 15px;
+}
+
+.now {
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.room {
+    position: relative;
+    padding-left: 25px;
+    padding-bottom: 15px;
+    margin-bottom: 1rem;
+}
+
+.room:hover {
+    transform: scale(1.1);
+}
+
+.room-img {
+    width: 347px;
+    height: 250px;
+    margin-bottom: 0.5rem;
+    margin-top: 25px;
+    border-radius: 30px;
+}
+
+.room-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.btn {
+    margin-top: 3px;
+    cursor: pointer;
+    width: 80px;
+    height: 40px;
+    margin-top: 5px;
+    color: black;
+    transition: all 0.3s ease-out;
+    background: #403e3d;
+    border-radius: 20px;
+}
+
+.btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.price {
+    color: white;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.wrapper {
+    margin: 80px auto;
+    padding: 20px;
+    background-size: cover;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.wrapper h2 {
+    margin-top: 0;
+    color: #f3e8e8;
+    text-align: center;
+}
+
+.wrapper .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #f10606;
+}
+
+.wrapper .content {
+    max-height: 50%;
+    overflow: auto;
+    text-align: center;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 18px 15px;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #e7e7e7;
+    padding: 20px 0;
+    background: transparent;
+}
+
+form label {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: white;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.content button {
+    background-color: #413b3b;
+    color: #fff;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.content button:hover {
+    transform: scale(1.2);
+}
+
+.popup {
+    width: 400px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup h2 {
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+}
+
+.popup button {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fd649;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

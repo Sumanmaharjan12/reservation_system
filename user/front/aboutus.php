@@ -65,6 +65,52 @@
     </div>
   </div>
   </div>
+  <div id="about">
+    <section class="aboutus">
+      <div class="content">
+        <p>Room service is a hotel amenity that allows guests to order food and drink to their rooms. Hotel staff
+          arrange the meal with the appropriate dishware and condiments on a room service tray. It's an in-room dining
+          best practice to offer guests a rolling room service table in case they don't want to eat in bed. </p>
+        <a href="#read"><button class="btn">Read More</button></a>
+      </div>
+      <div class="about_img">
+        <img src="../image/6.3.jpg" alt="">
+      </div>
+    </section>
+    </section>
+    <div class="overlay" id="read">
+      <div class="wrapper">
+        <a href="aboutus.php" class="close">&times;</a>
+        <div class="content">
+          <p>
+            Hotels typically provide a room service menu that includes a variety of food and beverage options. The menu
+            often includes breakfast, lunch, dinner, snacks, and drinks. Some hotels may also offer 24-hour room
+            service, allowing guests to order at any time.</p>
+
+          <p>Guests can place their room service orders by calling the hotel's designated room service extension or by
+            filling out an order form in their room. The order is then prepared by the hotel's kitchen staff and
+            delivered to the guest's room.</p>
+
+          <p> The delivery time for room service can vary depending on factors such as hotel occupancy, kitchen
+            workload, and the complexity of the order. Hotels usually provide an estimated delivery time when the order
+            is placed.</p>
+
+          <p> Room service often incurs additional charges beyond the cost of the food or beverage. These charges may
+            include delivery fees, service charges, and gratuities. It's important to check the hotel's policy regarding
+            additional fees before placing an order.
+
+            Special Requests: Most hotels can accommodate special dietary requests or specific </p>
+
+          <p>Room service charges are typically added to the guest's hotel bill. Upon checkout, guests can settle the
+            total bill, including the room service charges, using their preferred payment method.</p>
+
+          <p>Thank you for choosing our hotel reservation system. We're excited to be a part of your travel journey and
+            look forward to helping you find your perfect accommodation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
   <footer class="footer">
     <div class="footer_containerleft">
     </div>

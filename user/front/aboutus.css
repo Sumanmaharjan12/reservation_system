@@ -1,9 +1,16 @@
+*{
+    background-color: #454444;
+}
 .cross{
     float: right;
     width: 40px;
     font-size: 50px;
     color: red;
+    background-color: transparent;
     text-decoration: none;
+  }
+  h1{
+    background-color: transparent;
   }
   .top{
     height: 100vh;
@@ -15,15 +22,14 @@
 }
 .clip_path{
         padding: 35px 0 75px 0;
-        background-color: #1c1b1b;
+        background-image: linear-gradient(rgba(0,0,50,0.8),rgba(0,0,50,0.8)),url(../image/aboutus.jpg);
         clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 6rem), 0% 100%);
 }
-
-
 #about{
     width: 90%;
     margin: 3% auto;
     padding: 10px 20px;
+    
 }
 h1{
     font-size: 2rem;
@@ -44,22 +50,24 @@ h1{
     border-radius: 20px;
 }
 .about_img img{
-    max-width:  100%;
-    height: auto;
+    width: 580px;
+    height: 340px;
     display: block;
     transition: 0.5s ease;
     border-radius: 20px;
+    margin-left: 10px;
 }
 .about_img:hover img{
     transform: scale(1.2);
 }
+
 .content{
     flex: 1;
 }
 .content p{
     font-size: 18px;
     line-height: 1.5;
-    color: #666;
+    color: #dedbdb;
 }
 .about_img1 img{
     max-width:48%;
@@ -99,7 +107,6 @@ h1{
 .wrapper{
     margin: 55px auto;
     padding: 20px;
-    background-color: black;
     color: white;
     border-radius: 5px;
     width: 65%;
@@ -120,12 +127,13 @@ html{
     scroll-behavior: smooth;
 }
 .footer{
-    background: #24262b;
+    background: #454444;
     padding: 70px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 250px;
+    margin-top: 170px;
+    border-top: 2px solid #ffffff;
 }
 
 .footer_containerleft{
@@ -140,7 +148,7 @@ html{
     flex-direction: column;
     width: 1170px;
     margin: auto;
-    border-left: 1px solid #ffffff;
+    
 }
 ul{
     list-style: none;

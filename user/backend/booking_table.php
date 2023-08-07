@@ -30,6 +30,7 @@ $result = mysqli_query($conn, $query);
 if (!$result) {
     die('Query Error: ' . mysqli_error($conn));
 }
+$records=array();
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
@@ -109,6 +110,9 @@ if (mysqli_num_rows($result) > 0) {
                     </td>
                 </tr>
                 <?php
+            }
+            if (empty($records)) {
+                echo '<p style="color: red; font-size: 18px; text-align: center;">No booking records found.</p>';
             }
             ?>
         </tbody>

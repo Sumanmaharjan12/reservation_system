@@ -1,22 +1,32 @@
+
 <?php
-include('connect.php');
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['status']) && isset($_POST['code'])) {
+// admin_backend/update_status.php
+
+include_once "connect.php";
+include_once "email.php";
+
+if (isset($_POST['status']) && isset($_POST['code'])) {
     $status = $_POST['status'];
     $code = $_POST['code'];
 
-    // Perform necessary validations and security checks here
+    // Update the status in the database
+    $query = "UPDATE booking SET status = '$status' WHERE code = '$code'";
+    mysqli_query($conn, $query);
 
-    $sql = "UPDATE booking SET status='$status' WHERE code='$code'";
-    $result = $conn->query($sql);
+    if ($status === 'Confirmed') {
+        // Get the recipient's email address from the database based on $code
+        $query = "SELECT email FROM booking WHERE code = '$code'";
+        $result = mysqli_query($conn, $query);
 
-    if ($result === TRUE) {
-        echo "Reservation status updated successfully";
-    } else {
-        echo "Error updating reservation status: " . $conn->connect_error;
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $recipientEmail = $row["email"];
+            sendConfirmationEmail($recipientEmail, $code);
+        }
     }
 
-    $conn->close();
-} else {
-    echo "Invalid request";
+    // Return a response to the client
+    echo "Status updated successfully!";
 }
 ?>
+

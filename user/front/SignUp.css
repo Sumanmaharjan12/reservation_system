@@ -14,7 +14,7 @@ body{
   }
 .sign{
     width: 360px;
-    height: 550px;
+    height: 571px;
     margin: auto;
     border: 2px solid white;
     background: transparent;
@@ -63,8 +63,8 @@ form input{
 }
 .pass-icon{
     position: absolute;
-    top: 442px;
-    right: 550px;
+    top: 460px;
+    right: 540px;
     width: 24px;
     cursor: pointer;
 }

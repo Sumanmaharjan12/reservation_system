@@ -1,208 +1,161 @@
 <?php
-include('../admin_backend/connect.php');
-session_start();
-if (!isset($_SESSION['name'])) {
-    header("Location: ../admin/admin_login.php");
-} else {
-    ?>  
-<html>
-<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="../admin_css/header.css">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css'>
-    </head>
+require_once("admin_template.php");
 
-    <body>
-        
-        <div class="dashboard"> <!-- dashboard begins ------------------------------------------------------------------->
-        <!-- SIDEBAR -->
-            <section id="sidebar">
-                <div class="icon1">
-                    <a href="admin_index.php"><img src="../images/admin.png" alt="Logo1">
-                    </a>
-                </div>
-                <ul class="side-menu top">
-                    <li>
-                        <a href="admin_index.php">
-                            <i class='bx bxs-dashboard'></i>
-                            <span class="text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="users.php">
-                            <i class='bx bx-user'></i>
-                            <span class="text">Customer</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="booking.php" onclick="showbooking()">
-                            <i class='bx bx-time'></i>
-                            <span class="text">Booking</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="room.php">
-                            <i class='bx bx-bed'></i>
-                            <span class="text">Rooms</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="side-menu">
-                    <li>
-                        <a href="../admin_backend/logout.php" class="logout">
-                            <i class='bx bxs-log-out-circle'></i>
-                            <span class="text">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </section>
-            
-
-            <section class="main"> <!-- main section begins ------------------------------------------------------------>
-
-            <section class="right-upper">
-        <div class="right_about">
-        <div>
-            <p>
-                <?php echo $_SESSION['name']; ?>
-            </p>
-        </div>
-
-        <div class="profile">
-            <img src="../images/avatar.jpg" alt="Avatar" class="avatar">
-        </div>
-
-        <div class="notification_icon">
-            <button class="notification_btn" title="Notification">
-                <a href="#"> <span class="material-symbols-outlined">notifications</span>
-                </a>
-            </button>
-                </div>
-             </div>
-            </section>
-
-
-            <div class="table-data">
-                <div class="order">
-                     <h2>BOOKINGS</h2>
-                    <table class="table" border="2px">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Code</th>
-                                <th class="text-center">Email </th>
-                                 <th class="text-center">Arrival</th>
-                                <th class="text-center">Arrival Time</th>
-                                <th class="text-center">Depature</th>
-                                 <th class="text-center">Number</th>
-                                 <th class="text-center">Room No</th>
-                                 <th class="text-center">Status</th>
-                                 <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-    <?php
-      include_once "../admin_backend/connect.php";
-      $query="select * from booking";
-      $result = mysqli_query($conn, $query);
-      if (mysqli_num_rows($result) > 0) {
-        while ($row=mysqli_fetch_assoc($result)) {
-            $currentDateTime = date("Y-m-d H:i:s");
-
-            // Check if the booking has expired
-            if ($currentDateTime > $row["depature"]) {
-                continue; // Skip this booking if it has expired
-            }
-           
-    ?>
-    <tr>
-      <td><?=$row["code"]?>
-      <td><?=$row["email"]?>
-      <td><?=$row["arrival"]?></td>
-      <td><?=$row["arrival_time"]?></td>
-      <td><?=$row["depature"]?></td>
-      <td><?=$row["number"]?></td>
-      <td><?=$row["room_no"]?></td>
-      <td><?=$row["status"]?></td>
-      <td>
-    <select onchange="updateStatus(this.value, '<?=$row['code']; ?>')">
-        <option value="Pending" <?php echo ($row["status"] == "Pending") ? "selected" : ""; ?>>Pending</option>
-        <option value="Confirmed" <?php echo ($row["status"] == "Confirmed") ? "selected" : ""; ?>>Confirmed</option>
-        <option value="Cancelled" <?php echo ($row["status"] == "Cancelled") ? "selected" : ""; ?>>Cancelled</option>
-    </select>
-</td>
-      <td>
-            <a href='../admin_backend/delete_booking.php?email="<?=$row['email']?>"' class="btn"><i class="bx bx-trash delete-icon"></i></a>            
-      </td>      
-    </tr>
-    <?php
-
-           
-        }
-    }
-    ?>
-  </table>
-</div>
-</div>
-
-            <script>
-
-            document.addEventListener('DOMContentLoaded', function () {
-                const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-                const currentPage = window.location.pathname.split('/').pop(); // Get the current page URL
-                console.log(currentPage);
-                console.log(allSideMenu);
-                allSideMenu.forEach(item => {
-                    const li = item.parentElement;
-                    console.log(li);
-
-                    if (item.getAttribute('href') === currentPage) {
-                        li.classList.add('active');
-                    }
-
-                    item.addEventListener('click', function () {
-                        allSideMenu.forEach(i => {
-                            i.parentElement.classList.remove('active');
-                        })
-                        li.classList.add('active');
-                    })
-                });
-            });
-        </script>
-
-        <script>
-                function updateStatus(status, code) {
-                // Create a new FormData object
-                var formData = new FormData();
-                
-                // Append the status and reservationId to the FormData object
-                formData.append('status', status);
-                formData.append('code', code);
-
-                // Create a new XMLHttpRequest object
-                var xhr = new XMLHttpRequest();
-                
-                // Set up the request
-                xhr.open('POST', '../admin_backend/update_status.php', true);
-
-                // Set the onload function
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                    console.log(xhr.responseText);
-                    }
-                };
-                
-                // Send the request with the FormData
-                xhr.send(formData);
-                }
-        </script>
-
-    </body>
-
-    </html>
-    <?php
-}
 ?>
+
+
+<div class="table-data">
+    <div class="order">
+        <h2>BOOKINGS</h2>
+        <table class="table" border="2px">
+            <thead>
+                <tr>
+                    <th class="text-center">Code</th>
+                    <th class="text-center">Email </th>
+                    <th class="text-center">Arrival</th>
+                    <th class="text-center">Arriv Time</th>
+                    <th class="text-center">Depature</th>
+                    <th class="text-center">Number</th>
+                    <th class="text-center">Room No</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <?php
+            include_once "../admin_backend/connect.php";
+            $query = "select * from booking";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $currentDateTime = date("Y-m-d H:i:s");
+
+                    // Check if the booking has expired
+                    if ($currentDateTime > $row["depature"]) {
+                        $deleteQuery = "DELETE FROM booking WHERE code = '{$row['code']}'";
+                        mysqli_query($conn, $deleteQuery);
+                        continue; // Skip this booking if it has expired
+                    }
+
+                    ?>
+                    <tr>
+                        <td>
+                            <?= $row["code"] ?>
+                        <td>
+                            <?= $row["email"] ?>
+                        <td>
+                            <?= $row["arrival"] ?>
+                        </td>
+                        <td>
+                            <?= $row["arrival_time"] ?>
+                        </td>
+                        <td>
+                            <?= $row["depature"] ?>
+                        </td>
+                        <td>
+                            <?= $row["number"] ?>
+                        </td>
+                        <td>
+                            <?= $row["room_no"] ?>
+                        </td>
+                        <td>
+                            <?= $row["status"] ?>
+                        </td>
+                        <td>
+                            <select onchange="updateStatus(this.value, '<?= $row['code']; ?>')">
+                                <option value="Pending" <?php echo ($row["status"] == "Pending") ? "selected" : ""; ?>>Pending
+                                </option>
+                                <option value="Confirmed" <?php echo ($row["status"] == "Confirmed") ? "selected" : ""; ?>>
+                                    Confirmed</option>
+                                <option value="Cancelled" <?php echo ($row["status"] == "Cancelled") ? "selected" : ""; ?>>
+                                    Cancelled</option>
+                            </select>
+                        </td>
+                        <td>
+                            <a href='../admin_backend/delete_booking.php?email="<?= $row['email'] ?>"' class="btn"><i
+                                    class="bx bx-trash delete-icon"></i></a>
+                        </td>
+                    </tr>
+                    <?php
+
+
+                }
+            }
+            ?>
+        </table>
+    </div>
+</div>
+</section>
+</section>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+        const currentPage = window.location.pathname.split('/').pop(); // Get the current page URL
+        console.log(currentPage);
+        console.log(allSideMenu);
+        allSideMenu.forEach(item => {
+            const li = item.parentElement;
+            console.log(li);
+
+            if (item.getAttribute('href') === currentPage) {
+                li.classList.add('active');
+            }
+
+            item.addEventListener('click', function () {
+                allSideMenu.forEach(i => {
+                    i.parentElement.classList.remove('active');
+                })
+                li.classList.add('active');
+            })
+        });
+    });
+ 
+</script>
+
+<script>
+
+function updateStatus(status, code) {
+    // Create a new FormData object
+    var formData = new FormData();
+
+    // Append the status and code to the FormData object
+    formData.append('status', status);
+    formData.append('code', code);
+
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Set up the request
+    xhr.open('POST', '../admin_backend/update_status.php', true);
+
+    // Set the onload function
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            // If the update is successful, update the status in the current view
+            var table = document.querySelector('.table');
+            var rows = table.getElementsByTagName('tr');
+
+            // Find the row that corresponds to the booking code
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var rowCode = row.cells[0].innerText;
+                if (rowCode === code) {
+                    // Update the status cell in the row
+                    row.cells[7].innerText = status;
+                    break;
+                }
+            }
+
+            console.log(xhr.responseText);
+        }
+    };
+
+    // Send the request with the FormData
+    xhr.send(formData);
+}
+</script>
+
+</body>
+
+</html>

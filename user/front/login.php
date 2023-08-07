@@ -18,16 +18,16 @@ session_start();
 
 <body>
     <div class="container">
-        <a href="index.php" class="cross">&times;</a>
-        <div class="login">
+        <div class="login"> 
+            <a href="index.php" class="cross">&times;</a>
             <img src="../image/av.png" alt="">
             <h1>Log In</h1>
             <form action="../backend/login_fetch.php" method="POST">
                 <div class="input_feild">
-                    <input type="text" name="email" id="email" placeholder="Email"><br>
+                    <input type="text" name="email" id="email" placeholder="Email" required><br>
                 </div>
                 <div class="input_feild">
-                    <input type="password" name="password" id="password" placeholder="PASSWORD">
+                    <input type="password" name="password" id="password" placeholder="PASSWORD" required>
                     <i onclick="pass()" id="pass-icon" class="bx bxs-hide"></i>
                 </div>
                 <div class="btn">
